@@ -42,6 +42,7 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
     { key: "skills", label: t.nav.skills },
     { key: "experience", label: t.nav.experience },
     { key: "projects", label: t.nav.projects },
+    { key: "certifications", label: t.nav.certifications },
     { key: "contact", label: t.nav.contact },
   ];
 

@@ -24,12 +24,20 @@ export const cvData = {
     systems: ["Windows", "Linux"]
   },
   certifications: [
-    "Introduction to Java and Object-Oriented Programming (Coursera)",
-    "Python for Everybody (Coursera)",
-    "React Basics (Coursera)",
-    "Software Engineering Modeling Software Systems using UML (Coursera)",
-    "Agile with Atlassian Jira (Coursera)",
-    "Etudier en France French Intermediate course B1-B2 (Coursera)"
+    { name: "Introduction to Java and Object-Oriented Programming (Coursera)", pdf: "/certif Introduction to Java.pdf", img: "/certs/java.png" },
+    { name: "Python for Everybody (Coursera)", pdf: "/Certif Python.pdf", img: "/certs/python.png" },
+    { name: "React Basics (Coursera)", pdf: "/Certif REACT BASIC.pdf", img: "/certs/react-basic.png" },
+    { name: "React Native (Coursera)", pdf: "/Certif REACT native.pdf", img: "/certs/react-native.png" },
+    { name: "Software Engineering: UML (Coursera)", pdf: "/certi UML.pdf", img: "/certs/uml.png" },
+    { name: "Agile with Atlassian Jira (Coursera)", pdf: "/certif JIRA.pdf", img: "/certs/jira.png" },
+    { name: "Git & GitHub (Coursera)", pdf: "/Certif git and github.pdf", img: "/certs/git.png" },
+    { name: "French Intermediate B1-B2 (Coursera)", pdf: "/certif Francais B1-B2.pdf", img: "/certs/french.png" },
+    { name: "English (Coursera)", pdf: "/certif coursera ANGLAIS.pdf", img: "/certs/english.png" },
+    { name: "Docker, Kubernetes & OpenShift", pdf: "/Certif Docker,kubernetes et openshift.pdf", img: "/certs/docker.png" },
+    { name: "Virtual Networks in Azure", pdf: "/Certif Virtual Networks in Azure.pdf", img: "/certs/azure.png" },
+    { name: "Introduction to Scrum Master", pdf: "/certif Introduction to Scrun Master Profession.pdf", img: "/certs/scrum.png" },
+    { name: "SAP Fundamentals", pdf: "/certif SAP Fundamentals.pdf", img: "/certs/sap.png" },
+    { name: "Unix System Basics", pdf: "/certif Unix System Basics.pdf", img: "/certs/unix.png" },
   ],
   softSkills: ["Esprit d'équipe", "rigueur", "autonomie", "curiosité technique", "gestion des priorités"],
   languages: [

@@ -30,6 +30,7 @@ export default function App() {
   const skillsRef = useRef(null);
   const expRef = useRef(null);
   const projRef = useRef(null);
+  const certRef = useRef(null);
   const contactRef = useRef(null);
 
   const sectionRefs = useMemo(() => ({
@@ -37,6 +38,7 @@ export default function App() {
     skills: skillsRef,
     experience: expRef,
     projects: projRef,
+    certifications: certRef,
     contact: contactRef,
   }), []);
 
@@ -105,7 +107,9 @@ export default function App() {
               <AcademicProjects />
             </div>
             <Education />
-            <Certifications />
+            <div id="certifications" ref={sectionRefs.certifications}>
+              <Certifications />
+            </div>
             <SoftSkillsLanguages />
           </motion.main>
         ) : (
