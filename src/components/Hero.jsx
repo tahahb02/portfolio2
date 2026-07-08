@@ -156,10 +156,12 @@ export default function Hero({ profile, onContactClick }) {
             className="text-center lg:text-left"
           >
             <motion.div variants={bounceIn} className="mb-6 inline-block">
-              <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-violet-500 via-cyan-400 to-violet-500 p-[3px] shadow-lg shadow-violet-500/20 group hover:shadow-violet-500/50 hover:shadow-2xl transition-all duration-500 cursor-pointer mx-auto lg:mx-0">
-                <div className="w-full h-full rounded-full flex items-center justify-center text-2xl font-bold text-white group-hover:scale-110 transition-transform duration-500" style={{ backgroundColor: "var(--bg-primary)" }}>
-                  {profile.name.split(" ").map(n => n[0]).join("")}
-                </div>
+              <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-violet-500 via-cyan-400 to-violet-500 p-[3px] shadow-lg shadow-violet-500/20 group hover:shadow-violet-500/50 hover:shadow-2xl transition-all duration-500 cursor-pointer mx-auto lg:mx-0">
+                <img
+                  src="/profile.png"
+                  alt={profile.name}
+                  className="w-full h-full rounded-full object-contain group-hover:scale-110 transition-transform duration-500"
+                />
               </div>
             </motion.div>
 
