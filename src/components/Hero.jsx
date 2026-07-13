@@ -1,6 +1,6 @@
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaEye, FaJava, FaReact, FaPython, FaAngular } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaEye, FaJava, FaReact } from "react-icons/fa";
 import { SiSpringboot, SiTailwindcss } from "react-icons/si";
 import { fadeInUp, staggerContainer, bounceIn } from "../constants/animations";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -11,10 +11,6 @@ const codeSnippets = [
   { text: 'const [portfolio, setPortfolio] = useState({...})', icon: FaReact, color: "#61DAFB" },
   { text: 'System.out.println("Hello, World!");', icon: FaJava, color: "#ED8B00" },
   { text: '@Component\npublic class DeveloperService { ... }', icon: FaJava, color: "#ED8B00" },
-  { text: '<ThemeProvider>\n  <LanguageProvider>\n    <App />\n  </LanguageProvider>\n</ThemeProvider>', icon: FaReact, color: "#61DAFB" },
-  { text: 'pip install django-rest-framework', icon: FaPython, color: "#3776AB" },
-  { text: 'ng generate component portfolio', icon: FaAngular, color: "#DD0031" },
-  { text: '@GetMapping("/api/experience")\npublic List<Experience> getExp() { ... }', icon: SiSpringboot, color: "#6DB33F" },
   { text: '<div className="min-h-screen bg-slate-950">\n  <Navbar />\n  <Hero />\n</div>', icon: SiTailwindcss, color: "#06B6D4" },
 ];
 
@@ -36,7 +32,7 @@ function CodeTyper() {
           clearInterval(timer);
           setTimeout(() => setTyping(false), 2000);
         }
-      }, 25);
+      }, 30);
     }
 
     return () => clearInterval(timer);
@@ -138,14 +134,6 @@ export default function Hero({ profile, onContactClick }) {
         className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full blur-[128px] animate-float-delayed"
         style={{ backgroundColor: "rgba(6,182,212,0.12)", transform: `translate(${mousePos.x * -0.3}px, ${mousePos.y * -0.3}px)` }}
       />
-      <div
-        className="absolute top-1/3 left-1/3 w-72 h-72 rounded-full blur-[100px] animate-float-slow"
-        style={{ backgroundColor: "rgba(139,92,246,0.06)", transform: `translate(${mousePos.x * 0.7}px, ${mousePos.y * 0.7}px)` }}
-      />
-      <div
-        className="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full blur-[100px] animate-float"
-        style={{ backgroundColor: "rgba(6,182,212,0.06)", transform: `translate(${mousePos.x * -0.5}px, ${mousePos.y * -0.5}px)` }}
-      />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -161,6 +149,9 @@ export default function Hero({ profile, onContactClick }) {
                   src="/profile.png"
                   alt={profile.name}
                   className="w-full h-full rounded-full object-contain group-hover:scale-110 transition-transform duration-500"
+                  loading="eager"
+                  width="144"
+                  height="144"
                 />
               </div>
             </motion.div>
@@ -203,8 +194,8 @@ export default function Hero({ profile, onContactClick }) {
                   borderColor: "var(--border-color)",
                   color: "var(--text-secondary)",
                 }}
-                onMouseEnter={(e) => { e.target.style.borderColor = "rgba(139,92,246,0.5)"; e.target.style.backgroundColor = "rgba(139,92,246,0.08)"; }}
-                onMouseLeave={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.backgroundColor = "transparent"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(139,92,246,0.5)"; e.currentTarget.style.backgroundColor = "rgba(139,92,246,0.08)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.backgroundColor = "transparent"; }}
               >
                 <FaEye className="text-sm" />
                 {t.hero.viewCV}
@@ -217,8 +208,8 @@ export default function Hero({ profile, onContactClick }) {
                   borderColor: "var(--border-color)",
                   color: "var(--text-secondary)",
                 }}
-                onMouseEnter={(e) => { e.target.style.borderColor = "rgba(6,182,212,0.5)"; e.target.style.backgroundColor = "rgba(6,182,212,0.08)"; }}
-                onMouseLeave={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.backgroundColor = "transparent"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(6,182,212,0.5)"; e.currentTarget.style.backgroundColor = "rgba(6,182,212,0.08)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.backgroundColor = "transparent"; }}
               >
                 <FaDownload className="text-sm" />
                 {t.hero.downloadBtn}
@@ -239,8 +230,8 @@ export default function Hero({ profile, onContactClick }) {
                   title={label}
                   className={`transition-all duration-300 text-2xl hover:-translate-y-1.5 hover:scale-110`}
                   style={{ color: "var(--text-muted)" }}
-                  onMouseEnter={(e) => e.target.style.color = hover.includes("violet") ? "#a78bfa" : hover.includes("cyan") ? "#22d3ee" : "#fbbf24" }
-                  onMouseLeave={(e) => e.target.style.color = "var(--text-muted)"}
+                  onMouseEnter={(e) => e.currentTarget.style.color = hover.includes("violet") ? "#a78bfa" : hover.includes("cyan") ? "#22d3ee" : "#fbbf24" }
+                  onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-muted)"}
                 >
                   <Icon />
                 </a>

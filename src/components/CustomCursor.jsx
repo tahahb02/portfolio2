@@ -21,16 +21,14 @@ export default function CustomCursor() {
   }, [cursorX, cursorY]);
 
   useEffect(() => {
-    document.addEventListener("mousemove", updatePos);
+    document.addEventListener("mousemove", updatePos, { passive: true });
     return () => document.removeEventListener("mousemove", updatePos);
   }, [updatePos]);
-
-  if (typeof window === "undefined") return null;
 
   return (
     <div className="hidden lg:block" style={{ position: "fixed", inset: 0, zIndex: 9999, pointerEvents: "none" }}>
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] will-change-transform"
         style={{
           x: cursorX,
           y: cursorY,
@@ -43,7 +41,7 @@ export default function CustomCursor() {
         }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998] border"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998] border will-change-transform"
         style={{
           x: ringX,
           y: ringY,

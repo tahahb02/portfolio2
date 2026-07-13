@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cvData } from "./data/cvData";
 import Navbar from "./components/Navbar";
@@ -10,10 +10,11 @@ import AcademicProjects from "./components/AcademicProjects";
 import Education from "./components/Education";
 import Certifications from "./components/Certifications";
 import SoftSkillsLanguages from "./components/SoftSkillsLanguages";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
 import TechIconsField from "./components/TechIconsField";
+
+const Contact = lazy(() => import("./components/Contact"));
 
 const pageTransition = {
   initial: { opacity: 0, y: 30, scale: 0.98 },
@@ -21,6 +22,14 @@ const pageTransition = {
   exit: { opacity: 0, y: -30, scale: 0.98 },
   transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
 };
+
+function ContactFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-violet-400 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -114,7 +123,9 @@ export default function App() {
           </motion.main>
         ) : (
           <motion.main key="contact" {...pageTransition}>
-            <Contact profile={cvData.profile} onBack={() => setCurrentPage("home")} />
+            <Suspense fallback={<ContactFallback />}>
+              <Contact profile={cvData.profile} onBack={() => setCurrentPage("home")} />
+            </Suspense>
           </motion.main>
         )}
       </AnimatePresence>

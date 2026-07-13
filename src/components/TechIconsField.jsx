@@ -1,34 +1,24 @@
 import { useEffect, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
 import {
-  FaJava, FaPython, FaJs, FaPhp, FaReact, FaAngular, FaNodeJs, FaDocker, FaGit,
+  FaJava, FaPython, FaJs, FaReact, FaDocker, FaGit,
 } from "react-icons/fa";
 import {
-  SiSpringboot, SiDjango, SiThymeleaf, SiMysql, SiPostgresql, SiEclipseide,
-  SiIntellijidea, SiSublimetext, SiPostman, SiJirasoftware, SiJest, SiJunit5,
+  SiSpringboot, SiMysql, SiPostgresql, SiIntellijidea, SiJirasoftware, SiTailwindcss,
 } from "react-icons/si";
 
 const allIcons = [
   { icon: FaJava, color: "#ED8B00", size: 26 },
   { icon: FaPython, color: "#3776AB", size: 24 },
   { icon: FaJs, color: "#F7DF1E", size: 22 },
-  { icon: FaPhp, color: "#777BB4", size: 26 },
   { icon: FaReact, color: "#61DAFB", size: 24 },
   { icon: SiSpringboot, color: "#6DB33F", size: 22 },
-  { icon: FaAngular, color: "#DD0031", size: 24 },
-  { icon: SiDjango, color: "#092E20", size: 22 },
-  { icon: SiThymeleaf, color: "#005F0F", size: 22 },
-  { icon: FaNodeJs, color: "#339933", size: 24 },
   { icon: FaDocker, color: "#2496ED", size: 26 },
   { icon: SiMysql, color: "#4479A1", size: 24 },
   { icon: SiPostgresql, color: "#336791", size: 22 },
-  { icon: SiEclipseide, color: "#2C2255", size: 24 },
   { icon: SiIntellijidea, color: "#FE315D", size: 22 },
-  { icon: SiSublimetext, color: "#FF9800", size: 22 },
-  { icon: SiPostman, color: "#FF6C37", size: 22 },
   { icon: SiJirasoftware, color: "#0052CC", size: 22 },
-  { icon: SiJest, color: "#C21325", size: 22 },
-  { icon: SiJunit5, color: "#25A162", size: 22 },
+  { icon: SiTailwindcss, color: "#06B6D4", size: 24 },
   { icon: FaGit, color: "#F05032", size: 24 },
 ];
 
@@ -72,14 +62,22 @@ export default function TechIconsField() {
     const handleMouse = (e) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
-    window.addEventListener("mousemove", handleMouse);
+    window.addEventListener("mousemove", handleMouse, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
 
   useEffect(() => {
     let running = true;
-    const loop = () => {
+    let lastTime = 0;
+    const interval = 1000 / 30;
+
+    const loop = (timestamp) => {
       if (!running) return;
+      rafRef.current = requestAnimationFrame(loop);
+
+      if (timestamp - lastTime < interval) return;
+      lastTime = timestamp;
+
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
 
@@ -107,8 +105,6 @@ export default function TechIconsField() {
 
         el.style.transform = `translate(${offsetsRef.current[i].x}px, ${offsetsRef.current[i].y}px)`;
       });
-
-      rafRef.current = requestAnimationFrame(loop);
     };
     rafRef.current = requestAnimationFrame(loop);
     return () => {
@@ -127,14 +123,14 @@ export default function TechIconsField() {
         return (
           <motion.div
             key={item.id}
-            className="absolute"
+            className="absolute will-change-transform"
             style={{ left: `${item.x}%`, top: `${item.y}%` }}
             initial={{ opacity: 0 }}
             animate={{
-              opacity: [0.18, 0.38, 0.2, 0.38, 0.18],
+              opacity: [0.15, 0.3, 0.15, 0.3, 0.15],
               x: xKf,
               y: yKf,
-              scale: [1, 1.1, 0.95, 1.08, 1],
+              scale: [1, 1.05, 0.97, 1.03, 1],
               rotate: [baseRotate, baseRotate + rotateDrift * 0.5, baseRotate - rotateDrift * 0.3, baseRotate + rotateDrift * 0.4, baseRotate],
             }}
             transition={{
@@ -144,7 +140,7 @@ export default function TechIconsField() {
               ease: "easeInOut",
             }}
           >
-            <div ref={(el) => (innerRefs.current[item.id] = el)}>
+            <div ref={(el) => (innerRefs.current[item.id] = el)} style={{ willChange: "transform" }}>
               <Icon style={{ color: item.color, fontSize: item.size }} />
             </div>
           </motion.div>

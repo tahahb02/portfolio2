@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaAward, FaCertificate, FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from "react-icons/fa";
+import { FaAward, FaCertificate, FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaLink } from "react-icons/fa";
 import { fadeInUp, staggerContainer } from "../constants/animations";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -61,15 +61,28 @@ export default function Certifications() {
                           CERT-{String(page * PER_PAGE + idx + 1).padStart(2, "0")}
                         </span>
                         <p className="text-sm leading-relaxed group-hover:text-slate-200 transition-colors mt-0.5" style={{ color: "var(--text-secondary)" }}>{cert.name}</p>
-                        <a
-                          href={cert.pdf}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 mt-2 text-xs font-medium text-amber-400/70 hover:text-amber-300 transition-colors"
-                        >
-                          <FaExternalLinkAlt className="text-[10px]" />
-                          Voir le certificat
-                        </a>
+                        <div className="flex items-center gap-3 mt-2">
+                          <a
+                            href={cert.pdf}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-400/70 hover:text-amber-300 transition-colors"
+                          >
+                            <FaExternalLinkAlt className="text-[10px]" />
+                            Voir le certificat
+                          </a>
+                          {cert.courseraUrl && (
+                            <a
+                              href={cert.courseraUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-400/70 hover:text-blue-300 transition-colors"
+                            >
+                              <FaLink className="text-[10px]" />
+                              Vérifier sur Coursera
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>

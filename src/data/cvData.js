@@ -11,6 +11,7 @@ export const cvData = {
     github: "https://github.com/tahahb02"
   },
   education: [
+    { dates: "Mai 2026 - Novembre 2026", title: "Formation Intensive Wings Tech", institution: "Wings Tech by Jadara & Drosos Foundation", description: "Formation intensive de 6 mois+ axée sur le développement full-stack (projets concrets), le développement personnel et les ateliers pratiques.", ongoing: true },
     { dates: "2022-2025", title: "Cycle d'ingénierie en informatique et réseau option MIAGE", institution: "École Marocaine des Sciences de l'Ingénieur (EMSI)" },
     { dates: "2020 - 2022", title: "Années préparatoires", institution: "École Marocaine des Sciences de l'Ingénieur (EMSI)" },
     { dates: "2019-2020", title: "Baccalauréat physique chimie option français", institution: "Mention Bien" }
@@ -85,6 +86,8 @@ export const cvData = {
     }
   ],
   academicProjects: [
+    { title: "MedCare AI", desc: "Plateforme médicale intelligente digitalisant les cabinets : gestion des patients, téléconsultation, IA clinique, prescriptions électroniques et suivi santé.", github: "https://github.com/tahahb02/MedCare-AI", live: "https://medcare-ai-jet.vercel.app", featured: true },
+    { title: "SmartLife AI", desc: "Assistant quotidien intelligent : budget IA, tâches Kanban, médicaments, scanner de factures, assistant vocal et recommandations personnalisées.", github: "https://github.com/tahahb02/Smart-Life-AI", live: "https://smartlife-ai-eight.vercel.app", featured: true },
     { title: "Smart Recruiter", desc: "Matching intelligent entre offres et CVs via LLM (Ollama)" },
     { title: "BookHub", desc: "Plateforme de gestion et distribution d'E-books (React / Spring Boot)" },
     { title: "QuizzApp (Android)", desc: "Application mobile de quiz pour permis de conduire" },
