@@ -34,12 +34,12 @@ function SkillBar({ name, level }) {
   return (
     <div className="group/skill">
       <div className="flex justify-between items-center mb-1">
-        <span className="text-sm group-hover/skill:text-violet-300 transition-colors" style={{ color: "var(--text-secondary)" }}>{name}</span>
-        <span className="text-xs group-hover/skill:text-violet-400 transition-colors" style={{ color: "var(--text-muted)" }}>{level}%</span>
+        <span className="text-sm group-hover/skill:text-bordeaux-300 transition-colors" style={{ color: "var(--text-secondary)" }}>{name}</span>
+        <span className="text-xs group-hover/skill:text-bordeaux-400 transition-colors" style={{ color: "var(--text-muted)" }}>{level}%</span>
       </div>
       <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: "var(--bg-secondary)" }}>
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"
+          className="h-full rounded-full bg-gradient-to-r from-bordeaux-500 to-champagne-400"
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true }}
@@ -54,11 +54,11 @@ export default function Skills({ skills }) {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold mb-12 flex items-center gap-3">
-          <FaCode className="text-violet-400" />
-          <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
+          <FaCode className="text-bordeaux-400" />
+          <span className="bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent">
             {t.skills.title}
           </span>
         </h3>
@@ -68,7 +68,7 @@ export default function Skills({ skills }) {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {Object.entries(skills).map(([category, list]) => {
             const Icon = categoryIcons[category] || FaCode;
@@ -79,11 +79,11 @@ export default function Skills({ skills }) {
                 variants={fadeInUp}
                 className="backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 group"
                 style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(139,92,246,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(139,92,246,0.05)"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(150,24,58,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(150,24,58,0.05)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-violet-500/10 text-violet-400 group-hover:bg-violet-500/20 transition-colors">
+                  <div className="p-2 rounded-lg bg-bordeaux-500/10 text-bordeaux-400 group-hover:bg-bordeaux-500/20 transition-colors">
                     <Icon />
                   </div>
                   <h4 className="text-lg font-semibold capitalize" style={{ color: "var(--text-secondary)" }}>

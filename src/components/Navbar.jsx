@@ -81,8 +81,8 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
           className="text-2xl font-bold tracking-tight cursor-pointer transition-colors group"
           style={{ color: "var(--text-primary)" }}
         >
-          <span className="hover:text-violet-400 transition-colors">
-            TH<span className="text-violet-400 group-hover:text-cyan-400 transition-colors">.</span>
+          <span className="hover:text-bordeaux-400 transition-colors">
+            TH<span className="text-bordeaux-400 group-hover:text-champagne-300 transition-colors">.</span>
           </span>
         </button>
 
@@ -95,7 +95,7 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
                 onClick={() => handleClick(key)}
                 className="relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer"
                 style={{
-                  color: isActive ? "#a78bfa" : "var(--text-secondary)",
+                  color: isActive ? "#96183a" : "var(--text-secondary)",
                 }}
                 onMouseEnter={(e) => { if (!isActive) e.target.style.color = "var(--text-primary)"; }}
                 onMouseLeave={(e) => { if (!isActive) e.target.style.color = "var(--text-secondary)"; }}
@@ -105,7 +105,7 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
                   <motion.span
                     layoutId="activeTab"
                     className="absolute inset-0 rounded-lg -z-10"
-                    style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.15))" }}
+                    style={{ background: "linear-gradient(135deg, rgba(150,24,58,0.15), rgba(201,169,110,0.15))" }}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -141,10 +141,10 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
                       onClick={() => { changeLang(l.code); setLangOpen(false); }}
                       className="flex items-center gap-3 w-full px-4 py-2 text-sm transition-colors cursor-pointer"
                       style={{
-                        color: lang === l.code ? "#a78bfa" : "var(--text-secondary)",
-                        backgroundColor: lang === l.code ? "rgba(139,92,246,0.08)" : "transparent",
+                        color: lang === l.code ? "#96183a" : "var(--text-secondary)",
+                        backgroundColor: lang === l.code ? "rgba(150,24,58,0.08)" : "transparent",
                       }}
-                      onMouseEnter={(e) => { if (lang !== l.code) e.target.style.backgroundColor = "rgba(139,92,246,0.05)"; }}
+                      onMouseEnter={(e) => { if (lang !== l.code) e.target.style.backgroundColor = "rgba(150,24,58,0.05)"; }}
                       onMouseLeave={(e) => { if (lang !== l.code) e.target.style.backgroundColor = "transparent"; }}
                     >
                       <span>{flagMap[l.code]}</span>
@@ -195,7 +195,7 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
 
       <div className="relative h-0.5" style={{ backgroundColor: "rgba(51,65,85,0.3)" }}>
         <motion.div
-          className="absolute inset-y-0 left-0 bg-gradient-to-r from-violet-500 to-cyan-500"
+          className="absolute inset-y-0 left-0 bg-gradient-to-r from-bordeaux-500 to-champagne-400"
           style={{ width: `${scrollProgress}%` }}
           animate={{ width: `${scrollProgress}%` }}
           transition={{ duration: 0.1 }}
@@ -224,10 +224,10 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
                     onClick={() => handleClick(key)}
                     className="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer text-left"
                     style={{
-                      color: isActive ? "#a78bfa" : "var(--text-secondary)",
-                      backgroundColor: isActive ? "rgba(139,92,246,0.1)" : "transparent",
+                  color: isActive ? "#96183a" : "var(--text-secondary)",
+                      backgroundColor: isActive ? "rgba(150,24,58,0.1)" : "transparent",
                     }}
-                    onMouseEnter={(e) => { if (!isActive) e.target.style.backgroundColor = "rgba(139,92,246,0.05)"; }}
+                    onMouseEnter={(e) => { if (!isActive) e.target.style.backgroundColor = "rgba(150,24,58,0.05)"; }}
                     onMouseLeave={(e) => { if (!isActive) e.target.style.backgroundColor = "transparent"; }}
                   >
                     {label}
@@ -243,9 +243,9 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
                       onClick={() => changeLang(l.code)}
                       className="flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer"
                       style={{
-                        backgroundColor: lang === l.code ? "rgba(139,92,246,0.15)" : "transparent",
-                        color: lang === l.code ? "#a78bfa" : "var(--text-secondary)",
-                        border: lang === l.code ? "1px solid rgba(139,92,246,0.3)" : "1px solid transparent",
+                        backgroundColor: lang === l.code ? "rgba(150,24,58,0.15)" : "transparent",
+                        color: lang === l.code ? "#96183a" : "var(--text-secondary)",
+                        border: lang === l.code ? "1px solid rgba(150,24,58,0.3)" : "1px solid transparent",
                       }}
                     >
                       {flagMap[l.code]} {l.code.toUpperCase()}

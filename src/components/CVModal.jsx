@@ -22,34 +22,34 @@ export default function CVModal({ onClose }) {
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl h-[80vh] rounded-2xl overflow-hidden flex flex-col shadow-2xl"
+        className="relative w-full max-w-4xl h-[70vh] sm:h-[80vh] rounded-2xl overflow-hidden flex flex-col shadow-2xl"
         style={{ backgroundColor: "var(--bg-secondary)" }}
       >
         <div
-          className="flex items-center justify-between px-6 py-4 border-b shrink-0"
+          className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-3 sm:py-4 border-b shrink-0"
           style={{ borderColor: "var(--border-color)" }}
         >
-          <h3 className="text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+          <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
             CV - Taha HILAL BIK
           </h3>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <a
               href={cvUrl}
               download
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-600 to-cyan-600 text-white text-sm font-medium rounded-xl hover:shadow-lg hover:shadow-violet-500/25 hover:scale-105 active:scale-95 transition-all duration-300"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-bordeaux-600 to-bordeaux-700 text-white text-xs sm:text-sm font-medium rounded-xl hover:shadow-lg hover:shadow-bordeaux-500/25 hover:scale-105 active:scale-95 transition-all duration-300"
             >
               <FaDownload size={14} />
-              {t.hero.downloadBtn}
+              <span className="hidden sm:inline">{t.hero.downloadBtn}</span>
             </a>
             <a
               href={cvUrl}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2 border rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 border rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95"
               style={{ borderColor: "var(--border-color)", color: "var(--text-secondary)" }}
             >
               <FaExternalLinkAlt size={12} />
-              Ouvrir
+              <span className="hidden sm:inline">Ouvrir</span>
             </a>
             <button
               onClick={onClose}

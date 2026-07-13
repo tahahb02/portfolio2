@@ -8,11 +8,11 @@ export default function Experience() {
   const experiences = content.experiences;
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold mb-12 flex items-center gap-3">
-          <FaBriefcase className="text-violet-400" />
-          <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
+          <FaBriefcase className="text-bordeaux-400" />
+          <span className="bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent">
             {t.experience.title}
           </span>
         </h3>
@@ -24,36 +24,36 @@ export default function Experience() {
           variants={staggerContainer}
           className="relative"
         >
-          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-violet-500/50 via-cyan-500/50 to-transparent" />
+          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-bordeaux-500/50 via-champagne-400/50 to-transparent" />
 
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
               variants={fadeInUp}
-              className="flex gap-6 pb-12 last:pb-0 group"
+              className="flex gap-4 sm:gap-6 pb-10 sm:pb-12 last:pb-0 group"
             >
               <div className="relative shrink-0">
                 <motion.div
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-white text-sm font-bold shadow-lg shadow-violet-500/20 group-hover:scale-110 group-hover:shadow-violet-500/40 transition-all duration-300"
+                  className="w-10 h-10 rounded-full bg-gradient-to-br from-bordeaux-500 to-champagne-400 flex items-center justify-center text-white text-sm font-bold shadow-lg shadow-bordeaux-500/20 group-hover:scale-110 group-hover:shadow-bordeaux-500/40 transition-all duration-300"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
                   {idx + 1}
                 </motion.div>
-                <div className="absolute -inset-2 rounded-full bg-violet-500/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute -inset-2 rounded-full bg-bordeaux-500/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
               <motion.div
                 className="flex-1 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300"
                 style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(139,92,246,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(139,92,246,0.1)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(150,24,58,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(150,24,58,0.1)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
                   <div>
                     <h4 className="text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
                       {exp.role}{" "}
-                      <span className="text-violet-400">@ {exp.company}</span>
+                      <span className="text-bordeaux-400">@ {exp.company}</span>
                     </h4>
                   </div>
                   <span className="text-sm shrink-0 md:pt-1 font-mono" style={{ color: "var(--text-muted)" }}>
@@ -76,7 +76,7 @@ export default function Experience() {
                       viewport={{ once: true }}
                       transition={{ delay: tIdx * 0.1 }}
                     >
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-violet-400 shrink-0 group-hover/task:bg-cyan-400 transition-colors" />
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-bordeaux-400 shrink-0 group-hover/task:bg-champagne-300 transition-colors" />
                       <span className="group-hover/task:text-slate-300 transition-colors">{task}</span>
                     </motion.li>
                   ))}
@@ -86,7 +86,7 @@ export default function Experience() {
                   {exp.stack.map((tech, techIdx) => (
                     <motion.span
                       key={techIdx}
-                      className="px-3 py-1 bg-violet-500/10 text-violet-300 text-xs font-medium rounded-lg border border-violet-500/20 hover:bg-violet-500/20 hover:scale-105 hover:border-cyan-500/30 transition-all duration-200 cursor-default"
+                      className="px-3 py-1 bg-bordeaux-500/10 text-bordeaux-400 text-xs font-medium rounded-lg border border-bordeaux-500/20 hover:bg-bordeaux-500/20 hover:scale-105 hover:border-champagne-400/30 transition-all duration-200 cursor-default"
                       whileHover={{ y: -2 }}
                     >
                       {tech}

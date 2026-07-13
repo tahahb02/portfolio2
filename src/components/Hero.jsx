@@ -72,14 +72,14 @@ function CodeTyper() {
             <button
               onClick={prevSnippet}
               className="text-xs px-2 py-0.5 rounded-md transition-colors cursor-pointer"
-              style={{ color: "var(--text-muted)", backgroundColor: "rgba(139,92,246,0.1)" }}
+              style={{ color: "var(--text-muted)", backgroundColor: "rgba(150,24,58,0.1)" }}
             >
               &larr; Prev
             </button>
             <button
               onClick={nextSnippet}
               className="text-xs px-2 py-0.5 rounded-md transition-colors cursor-pointer"
-              style={{ color: "var(--text-muted)", backgroundColor: "rgba(139,92,246,0.1)" }}
+              style={{ color: "var(--text-muted)", backgroundColor: "rgba(150,24,58,0.1)" }}
             >
               Next &rarr;
             </button>
@@ -128,15 +128,15 @@ export default function Hero({ profile, onContactClick }) {
     >
       <div
         className="absolute top-1/4 -left-32 w-96 h-96 rounded-full blur-[128px] animate-float"
-        style={{ backgroundColor: "rgba(139,92,246,0.12)", transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)` }}
+        style={{ backgroundColor: "rgba(150,24,58,0.08)", transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)` }}
       />
       <div
         className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full blur-[128px] animate-float-delayed"
-        style={{ backgroundColor: "rgba(6,182,212,0.12)", transform: `translate(${mousePos.x * -0.3}px, ${mousePos.y * -0.3}px)` }}
+        style={{ backgroundColor: "rgba(201,169,110,0.08)", transform: `translate(${mousePos.x * -0.3}px, ${mousePos.y * -0.3}px)` }}
       />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -144,7 +144,7 @@ export default function Hero({ profile, onContactClick }) {
             className="text-center lg:text-left"
           >
             <motion.div variants={bounceIn} className="mb-6 inline-block">
-              <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-violet-500 via-cyan-400 to-violet-500 p-[3px] shadow-lg shadow-violet-500/20 group hover:shadow-violet-500/50 hover:shadow-2xl transition-all duration-500 cursor-pointer mx-auto lg:mx-0">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-bordeaux-500 via-champagne-300 to-bordeaux-500 p-[3px] shadow-lg shadow-bordeaux-500/20 group hover:shadow-bordeaux-500/50 hover:shadow-2xl transition-all duration-500 cursor-pointer mx-auto lg:mx-0">
                 <img
                   src="/profile.png"
                   alt={profile.name}
@@ -158,7 +158,7 @@ export default function Hero({ profile, onContactClick }) {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-violet-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent leading-tight bg-[length:200%_auto] animate-shimmer"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-bordeaux-400 via-champagne-300 to-bordeaux-400 bg-clip-text text-transparent leading-tight bg-[length:200%_auto] animate-shimmer"
             >
               {profile.name}
             </motion.h1>
@@ -179,22 +179,22 @@ export default function Hero({ profile, onContactClick }) {
               {profile.subTitle}
             </motion.p>
 
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start mb-6">
               <button
                 onClick={onContactClick}
-                className="group relative px-6 md:px-8 py-3 bg-gradient-to-r from-violet-600 to-cyan-600 text-white font-medium rounded-xl transition-all duration-300 cursor-pointer overflow-hidden hover:shadow-lg hover:shadow-violet-500/25 hover:scale-105 active:scale-95 text-sm md:text-base"
+                className="group relative px-6 md:px-8 py-3 bg-gradient-to-r from-bordeaux-600 to-bordeaux-700 text-white font-medium rounded-xl transition-all duration-300 cursor-pointer overflow-hidden hover:shadow-lg hover:shadow-bordeaux-500/25 hover:scale-105 active:scale-95 text-sm md:text-base w-full sm:w-auto"
               >
                 <span className="relative z-10">{t.hero.contactBtn}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-bordeaux-500 to-champagne-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
               <button
                 onClick={() => setCvOpen(true)}
-                className="group px-6 md:px-8 py-3 border rounded-xl font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95 text-sm md:text-base cursor-pointer"
+                className="group px-6 md:px-8 py-3 border rounded-xl font-medium transition-all duration-300 flex items-center gap-2 justify-center hover:scale-105 active:scale-95 text-sm md:text-base cursor-pointer w-full sm:w-auto"
                 style={{
                   borderColor: "var(--border-color)",
                   color: "var(--text-secondary)",
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(139,92,246,0.5)"; e.currentTarget.style.backgroundColor = "rgba(139,92,246,0.08)"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(150,24,58,0.5)"; e.currentTarget.style.backgroundColor = "rgba(150,24,58,0.08)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.backgroundColor = "transparent"; }}
               >
                 <FaEye className="text-sm" />
@@ -203,12 +203,12 @@ export default function Hero({ profile, onContactClick }) {
               <a
                 href="/Taha%20HILAL%20BIK_CV_Francais.pdf"
                 download
-                className="group px-6 md:px-8 py-3 border rounded-xl font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95 text-sm md:text-base"
+                className="group px-6 md:px-8 py-3 border rounded-xl font-medium transition-all duration-300 flex items-center gap-2 justify-center hover:scale-105 active:scale-95 text-sm md:text-base w-full sm:w-auto"
                 style={{
                   borderColor: "var(--border-color)",
                   color: "var(--text-secondary)",
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(6,182,212,0.5)"; e.currentTarget.style.backgroundColor = "rgba(6,182,212,0.08)"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(201,169,110,0.5)"; e.currentTarget.style.backgroundColor = "rgba(201,169,110,0.08)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.backgroundColor = "transparent"; }}
               >
                 <FaDownload className="text-sm" />
@@ -218,9 +218,9 @@ export default function Hero({ profile, onContactClick }) {
 
             <motion.div variants={fadeInUp} className="flex gap-5 justify-center lg:justify-start">
               {[
-                { icon: FaGithub, href: profile.github, hover: "hover:text-violet-400", label: "GitHub" },
-                { icon: FaLinkedin, href: profile.linkedin, hover: "hover:text-cyan-400", label: "LinkedIn" },
-                { icon: FaEnvelope, href: `mailto:${profile.email}`, hover: "hover:text-amber-400", label: "Email" },
+                { icon: FaGithub, href: profile.github, hover: "hover:text-bordeaux-400", label: "GitHub" },
+                { icon: FaLinkedin, href: profile.linkedin, hover: "hover:text-champagne-300", label: "LinkedIn" },
+                { icon: FaEnvelope, href: `mailto:${profile.email}`, hover: "hover:text-bordeaux-400", label: "Email" },
               ].map(({ icon: Icon, href, hover, label }) => (
                 <a
                   key={label}
@@ -230,7 +230,7 @@ export default function Hero({ profile, onContactClick }) {
                   title={label}
                   className={`transition-all duration-300 text-2xl hover:-translate-y-1.5 hover:scale-110`}
                   style={{ color: "var(--text-muted)" }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = hover.includes("violet") ? "#a78bfa" : hover.includes("cyan") ? "#22d3ee" : "#fbbf24" }
+                  onMouseEnter={(e) => e.currentTarget.style.color = hover.includes("champagne") ? "#c9a96e" : "#96183a" }
                   onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-muted)"}
                 >
                   <Icon />
