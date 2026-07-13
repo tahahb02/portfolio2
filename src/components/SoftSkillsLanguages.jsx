@@ -12,7 +12,7 @@ function ProficiencyBlocks({ level }) {
           key={s}
           className={`w-2.5 h-4 rounded-sm transition-all duration-300 ${
             s <= blocks
-              ? "bg-gradient-to-t from-bordeaux-500 to-champagne-300"
+              ? "bg-gradient-to-t from-navy-500 to-slate-300"
               : ""
           }`}
           style={{
@@ -42,8 +42,8 @@ export default function SoftSkillsLanguages() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-3">
-            <FaUserCheck className="text-bordeaux-400" />
-            <span className="bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent">
+            <FaUserCheck className="text-navy-400" />
+            <span className="bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent">
               {t.softSkillsLanguages.softTitle}
             </span>
           </h3>
@@ -71,7 +71,7 @@ export default function SoftSkillsLanguages() {
                   style={{ backgroundColor: "var(--bg-secondary)", color: "var(--text-secondary)", borderColor: "var(--border-color)" }}
                   whileHover={{ y: -2, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onMouseEnter={(e) => { e.target.style.borderColor = "rgba(150,24,58,0.4)"; e.target.style.color = "#96183a"; e.target.style.boxShadow = "0 4px 12px rgba(150,24,58,0.15)"; }}
+                  onMouseEnter={(e) => { e.target.style.borderColor = "rgba(44,95,138,0.4)"; e.target.style.color = "#2c5f8a"; e.target.style.boxShadow = "0 4px 12px rgba(44,95,138,0.15)"; }}
                   onMouseLeave={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.color = "var(--text-secondary)"; e.target.style.boxShadow = "none"; }}
                 >
                   {skill}
@@ -83,8 +83,8 @@ export default function SoftSkillsLanguages() {
 
         <div>
           <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-3">
-            <FaLanguage className="text-champagne-400" />
-            <span className="bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent">
+            <FaLanguage className="text-slate-400" />
+            <span className="bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent">
               {t.softSkillsLanguages.langTitle}
             </span>
           </h3>
@@ -123,9 +123,9 @@ export default function SoftSkillsLanguages() {
                       viewport={{ once: true }}
                       transition={{ duration: 1.2, delay: idx * 0.2, ease: "easeOut" }}
                       className={`h-full rounded-full relative group-hover:shadow-md transition-shadow ${
-                        levelValue >= 80 ? "bg-gradient-to-r from-bordeaux-500 to-champagne-400" :
-                        levelValue >= 60 ? "bg-gradient-to-r from-bordeaux-500 to-champagne-300" :
-                        "bg-gradient-to-r from-bordeaux-400 to-champagne-300"
+                        levelValue >= 80 ? "bg-gradient-to-r from-navy-500 to-slate-400" :
+                        levelValue >= 60 ? "bg-gradient-to-r from-navy-500 to-slate-300" :
+                        "bg-gradient-to-r from-navy-400 to-slate-300"
                       }`}
                     >
                       <div className="absolute inset-0 bg-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />

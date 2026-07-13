@@ -34,8 +34,8 @@ export default function CustomCursor() {
           y: cursorY,
           translateX: "-50%",
           translateY: "-50%",
-          backgroundColor: "#96183a",
-          boxShadow: "0 0 6px rgba(150,24,58,0.4)",
+          backgroundColor: "#2c5f8a",
+          boxShadow: "0 0 6px rgba(44,95,138,0.4)",
           opacity: visible ? 1 : 0,
           transition: "opacity 0.3s",
         }}
@@ -47,7 +47,7 @@ export default function CustomCursor() {
           y: ringY,
           translateX: "-50%",
           translateY: "-50%",
-          borderColor: "rgba(150,24,58,0.25)",
+          borderColor: "rgba(44,95,138,0.25)",
           opacity: visible ? 1 : 0,
           transition: "opacity 0.3s, border-color 0.3s",
         }}

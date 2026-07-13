@@ -36,7 +36,7 @@ export default function CVModal({ onClose }) {
             <a
               href={cvUrl}
               download
-              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-bordeaux-600 to-bordeaux-700 text-white text-xs sm:text-sm font-medium rounded-xl hover:shadow-lg hover:shadow-bordeaux-500/25 hover:scale-105 active:scale-95 transition-all duration-300"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-navy-600 to-navy-700 text-white text-xs sm:text-sm font-medium rounded-xl hover:shadow-lg hover:shadow-navy-500/25 hover:scale-105 active:scale-95 transition-all duration-300"
             >
               <FaDownload size={14} />
               <span className="hidden sm:inline">{t.hero.downloadBtn}</span>

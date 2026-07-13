@@ -11,8 +11,8 @@ export default function Education() {
     <section className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold mb-12 flex items-center gap-3">
-          <FaGraduationCap className="text-bordeaux-400" />
-          <span className="bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent">
+          <FaGraduationCap className="text-navy-400" />
+          <span className="bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent">
             {t.education.title}
           </span>
         </h3>
@@ -28,24 +28,24 @@ export default function Education() {
             <motion.div
               key={idx}
               variants={fadeInUp}
-              className={`group backdrop-blur-sm rounded-2xl p-6 flex flex-col transition-all duration-300 relative overflow-hidden ${edu.ongoing ? "ring-1 ring-champagne-400/30" : ""}`}
+              className={`group backdrop-blur-sm rounded-2xl p-6 flex flex-col transition-all duration-300 relative overflow-hidden ${edu.ongoing ? "ring-1 ring-slate-400/30" : ""}`}
               style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(201,169,110,0.3)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(201,169,110,0.1)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(138,178,211,0.3)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(138,178,211,0.1)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
             >
-              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-champagne-400/5 to-transparent rounded-bl-2xl" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-champagne-400/3 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-slate-400/5 to-transparent rounded-bl-2xl" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-slate-400/3 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="flex items-center gap-2 mb-3 relative">
                 <motion.div
-                  className={`h-2.5 w-2.5 rounded-full ${edu.ongoing ? "bg-green-400 animate-pulse" : "bg-champagne-300"}`}
+                  className={`h-2.5 w-2.5 rounded-full ${edu.ongoing ? "bg-green-400 animate-pulse" : "bg-slate-300"}`}
                   whileHover={{ scale: 2 }}
                   transition={{ duration: 0.3 }}
                 />
-                <FaCalendarAlt className="text-champagne-400/60 text-xs" />
-                <span className="text-xs font-medium text-bordeaux-400">{edu.dates}</span>
+                <FaCalendarAlt className="text-slate-400/60 text-xs" />
+                <span className="text-xs font-medium text-navy-400">{edu.dates}</span>
               </div>
-              <h4 className="text-base font-semibold mb-2 relative group-hover:text-bordeaux-300 transition-colors" style={{ color: "var(--text-primary)" }}>{edu.title}</h4>
-              <p className="text-sm mt-auto relative group-hover:text-champagne-300 transition-colors" style={{ color: "var(--text-muted)" }}>{edu.institution}</p>
+              <h4 className="text-base font-semibold mb-2 relative group-hover:text-navy-300 transition-colors" style={{ color: "var(--text-primary)" }}>{edu.title}</h4>
+              <p className="text-sm mt-auto relative group-hover:text-slate-300 transition-colors" style={{ color: "var(--text-muted)" }}>{edu.institution}</p>
               {edu.description && (
                 <p className="text-xs mt-2 relative leading-relaxed" style={{ color: "var(--text-muted)" }}>{edu.description}</p>
               )}

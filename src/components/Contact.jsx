@@ -32,7 +32,7 @@ export default function Contact({ profile, onBack }) {
             onClick={onBack}
             className="flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 cursor-pointer"
             style={{ color: "var(--text-secondary)" }}
-            onMouseEnter={(e) => e.target.style.color = "#96183a"}
+            onMouseEnter={(e) => e.target.style.color = "#2c5f8a"}
             onMouseLeave={(e) => e.target.style.color = "var(--text-secondary)"}
           >
             <FaArrowLeft size={14} />
@@ -44,7 +44,7 @@ export default function Contact({ profile, onBack }) {
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
-          className="text-2xl md:text-3xl font-bold mb-12 bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent"
+          className="text-2xl md:text-3xl font-bold mb-12 bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent"
         >
           {t.contact.title}
         </motion.h3>
@@ -64,7 +64,7 @@ export default function Contact({ profile, onBack }) {
                 { name: "subject", label: t.contact.subject, type: "text", placeholder: t.contact.subject },
               ].map((field) => (
                 <div className="group" key={field.name}>
-                  <label className="block text-sm mb-2 group-focus-within:text-bordeaux-400 transition-colors" style={{ color: "var(--text-muted)" }}>{field.label}</label>
+                  <label className="block text-sm mb-2 group-focus-within:text-navy-400 transition-colors" style={{ color: "var(--text-muted)" }}>{field.label}</label>
                   <input
                     type={field.type}
                     name={field.name}
@@ -78,13 +78,13 @@ export default function Contact({ profile, onBack }) {
                       color: "var(--text-primary)",
                       border: "1px solid var(--border-color)",
                     }}
-                    onFocus={(e) => { e.target.style.borderColor = "rgba(150,24,58,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(150,24,58,0.1)"; }}
+                    onFocus={(e) => { e.target.style.borderColor = "rgba(44,95,138,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(44,95,138,0.1)"; }}
                     onBlur={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.boxShadow = "none"; }}
                   />
                 </div>
               ))}
               <div className="group">
-                <label className="block text-sm mb-2 group-focus-within:text-bordeaux-400 transition-colors" style={{ color: "var(--text-muted)" }}>{t.contact.message}</label>
+                <label className="block text-sm mb-2 group-focus-within:text-navy-400 transition-colors" style={{ color: "var(--text-muted)" }}>{t.contact.message}</label>
                 <textarea
                   rows={5}
                   name="message"
@@ -98,14 +98,14 @@ export default function Contact({ profile, onBack }) {
                     color: "var(--text-primary)",
                     border: "1px solid var(--border-color)",
                   }}
-                  onFocus={(e) => { e.target.style.borderColor = "rgba(150,24,58,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(150,24,58,0.1)"; }}
+                  onFocus={(e) => { e.target.style.borderColor = "rgba(44,95,138,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(44,95,138,0.1)"; }}
                   onBlur={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.boxShadow = "none"; }}
                 />
               </div>
               <button
                 type="submit"
                 disabled={sent}
-                className="group relative w-full px-8 py-3 bg-gradient-to-r from-bordeaux-600 to-bordeaux-700 text-white font-medium rounded-xl hover:shadow-lg hover:shadow-bordeaux-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
+                className="group relative w-full px-8 py-3 bg-gradient-to-r from-navy-600 to-navy-700 text-white font-medium rounded-xl hover:shadow-lg hover:shadow-navy-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <AnimatePresence mode="wait">
                   {sent ? (
@@ -131,9 +131,9 @@ export default function Contact({ profile, onBack }) {
               <h4 className="text-xl font-semibold mb-6" style={{ color: "var(--text-primary)" }}>{t.contact.infoTitle}</h4>
               <div className="space-y-4">
                 {[
-                  { icon: FaPhoneAlt, bg: "bg-bordeaux-500/10", text: "text-bordeaux-400", value: profile.phone, label: t.contact.phone },
-                  { icon: FaEnvelope, bg: "bg-champagne-400/10", text: "text-champagne-300", value: profile.email, label: t.contact.email },
-                  { icon: FaMapMarkerAlt, bg: "bg-bordeaux-500/10", text: "text-bordeaux-400", value: profile.location, label: "Adresse" },
+                  { icon: FaPhoneAlt, bg: "bg-navy-500/10", text: "text-navy-400", value: profile.phone, label: t.contact.phone },
+                  { icon: FaEnvelope, bg: "bg-slate-400/10", text: "text-slate-300", value: profile.email, label: t.contact.email },
+                  { icon: FaMapMarkerAlt, bg: "bg-navy-500/10", text: "text-navy-400", value: profile.location, label: "Adresse" },
                 ].map(({ icon: Icon, bg, text, value }, i) => (
                   <div key={i} className="flex items-center gap-3 group hover:translate-x-1 transition-transform" style={{ color: "var(--text-secondary)" }}>
                     <div className={`p-2.5 rounded-lg ${bg} ${text} group-hover:scale-110 transition-all`}>
@@ -148,7 +148,7 @@ export default function Contact({ profile, onBack }) {
                 <a href={profile.linkedin} target="_blank" rel="noreferrer"
                   className="flex items-center gap-2 px-4 py-2 rounded-xl border transition-all hover:scale-105"
                   style={{ backgroundColor: "var(--bg-secondary)", color: "var(--text-secondary)", borderColor: "var(--border-color)" }}
-                  onMouseEnter={(e) => { e.target.style.borderColor = "rgba(201,169,110,0.4)"; e.target.style.color = "#c9a96e"; }}
+                  onMouseEnter={(e) => { e.target.style.borderColor = "rgba(138,178,211,0.4)"; e.target.style.color = "#8ab2d3"; }}
                   onMouseLeave={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.color = "var(--text-secondary)"; }}
                 >
                   <FaLinkedin /> LinkedIn
@@ -156,7 +156,7 @@ export default function Contact({ profile, onBack }) {
                 <a href={profile.github} target="_blank" rel="noreferrer"
                   className="flex items-center gap-2 px-4 py-2 rounded-xl border transition-all hover:scale-105"
                   style={{ backgroundColor: "var(--bg-secondary)", color: "var(--text-secondary)", borderColor: "var(--border-color)" }}
-                  onMouseEnter={(e) => { e.target.style.borderColor = "rgba(150,24,58,0.4)"; e.target.style.color = "#96183a"; }}
+                  onMouseEnter={(e) => { e.target.style.borderColor = "rgba(44,95,138,0.4)"; e.target.style.color = "#2c5f8a"; }}
                   onMouseLeave={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.color = "var(--text-secondary)"; }}
                 >
                   <FaGithub /> GitHub

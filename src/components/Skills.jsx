@@ -34,12 +34,12 @@ function SkillBar({ name, level }) {
   return (
     <div className="group/skill">
       <div className="flex justify-between items-center mb-1">
-        <span className="text-sm group-hover/skill:text-bordeaux-300 transition-colors" style={{ color: "var(--text-secondary)" }}>{name}</span>
-        <span className="text-xs group-hover/skill:text-bordeaux-400 transition-colors" style={{ color: "var(--text-muted)" }}>{level}%</span>
+        <span className="text-sm group-hover/skill:text-navy-300 transition-colors" style={{ color: "var(--text-secondary)" }}>{name}</span>
+        <span className="text-xs group-hover/skill:text-navy-400 transition-colors" style={{ color: "var(--text-muted)" }}>{level}%</span>
       </div>
       <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: "var(--bg-secondary)" }}>
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-bordeaux-500 to-champagne-400"
+          className="h-full rounded-full bg-gradient-to-r from-navy-500 to-slate-400"
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true }}
@@ -57,8 +57,8 @@ export default function Skills({ skills }) {
     <section className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold mb-12 flex items-center gap-3">
-          <FaCode className="text-bordeaux-400" />
-          <span className="bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent">
+          <FaCode className="text-navy-400" />
+          <span className="bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent">
             {t.skills.title}
           </span>
         </h3>
@@ -79,11 +79,11 @@ export default function Skills({ skills }) {
                 variants={fadeInUp}
                 className="backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 group"
                 style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(150,24,58,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(150,24,58,0.05)"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(44,95,138,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(44,95,138,0.05)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-bordeaux-500/10 text-bordeaux-400 group-hover:bg-bordeaux-500/20 transition-colors">
+                  <div className="p-2 rounded-lg bg-navy-500/10 text-navy-400 group-hover:bg-navy-500/20 transition-colors">
                     <Icon />
                   </div>
                   <h4 className="text-lg font-semibold capitalize" style={{ color: "var(--text-secondary)" }}>

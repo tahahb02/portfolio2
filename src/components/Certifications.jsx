@@ -20,8 +20,8 @@ export default function Certifications() {
     <section className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold mb-12 flex items-center gap-3">
-          <FaAward className="text-bordeaux-400" />
-          <span className="bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent">
+          <FaAward className="text-navy-400" />
+          <span className="bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent">
             {t.certifications.title}
           </span>
         </h3>
@@ -42,22 +42,22 @@ export default function Certifications() {
                   variants={fadeInUp}
                   className="group backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 cursor-default relative"
                   style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(150,24,58,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(150,24,58,0.1)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(44,95,138,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(44,95,138,0.1)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
                 >
-                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-bordeaux-500/5 rounded-full blur-xl group-hover:bg-bordeaux-500/10 transition-all duration-500" />
+                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-navy-500/5 rounded-full blur-xl group-hover:bg-navy-500/10 transition-all duration-500" />
                   <div className="relative p-4">
                     <div className="flex items-start gap-3">
                       <div className="relative shrink-0">
                         <motion.div
-                          className="p-2 rounded-lg bg-bordeaux-500/10 text-bordeaux-500/60 group-hover:text-bordeaux-400 group-hover:bg-bordeaux-500/20 transition-all duration-300"
+                          className="p-2 rounded-lg bg-navy-500/10 text-navy-500/60 group-hover:text-navy-400 group-hover:bg-navy-500/20 transition-all duration-300"
                           whileHover={{ rotate: -10, scale: 1.1 }}
                         >
                           <FaCertificate />
                         </motion.div>
                       </div>
                       <div className="min-w-0 flex-1">
-                        <span className="text-xs font-mono text-bordeaux-500/60 group-hover:text-bordeaux-400 transition-colors">
+                        <span className="text-xs font-mono text-navy-500/60 group-hover:text-navy-400 transition-colors">
                           CERT-{String(page * PER_PAGE + idx + 1).padStart(2, "0")}
                         </span>
                         <p className="text-sm leading-relaxed group-hover:text-slate-200 transition-colors mt-0.5" style={{ color: "var(--text-secondary)" }}>{cert.name}</p>
@@ -66,7 +66,7 @@ export default function Certifications() {
                             href={cert.pdf}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 text-xs font-medium text-bordeaux-400/70 hover:text-bordeaux-300 transition-colors"
+                            className="inline-flex items-center gap-1.5 text-xs font-medium text-navy-400/70 hover:text-navy-300 transition-colors"
                           >
                             <FaExternalLinkAlt className="text-[10px]" />
                             Voir le certificat

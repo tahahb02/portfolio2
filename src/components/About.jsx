@@ -23,13 +23,13 @@ function AnimatedCounter({ value, suffix, label, icon: Icon, delay }) {
       variants={fadeInUp}
       className="backdrop-blur-sm rounded-xl p-5 text-center hover:-translate-y-1 transition-all duration-300 group cursor-default"
       style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-      onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(150,24,58,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(150,24,58,0.1)"; }}
+      onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(44,95,138,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(44,95,138,0.1)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; }}
     >
-      <div className="p-2.5 rounded-xl bg-bordeaux-500/10 w-fit mx-auto mb-3 group-hover:bg-bordeaux-500/20 group-hover:scale-110 transition-all duration-300">
-        <Icon className="text-bordeaux-400/80 text-lg group-hover:text-bordeaux-300 transition-colors" />
+      <div className="p-2.5 rounded-xl bg-navy-500/10 w-fit mx-auto mb-3 group-hover:bg-navy-500/20 group-hover:scale-110 transition-all duration-300">
+        <Icon className="text-navy-400/80 text-lg group-hover:text-navy-300 transition-colors" />
       </div>
-      <motion.div className="text-2xl font-bold group-hover:text-bordeaux-300 transition-colors" style={{ color: "var(--text-primary)" }}>
+      <motion.div className="text-2xl font-bold group-hover:text-navy-300 transition-colors" style={{ color: "var(--text-primary)" }}>
         <motion.span>{rounded}</motion.span>
         {suffix}
       </motion.div>
@@ -55,9 +55,9 @@ export default function About() {
           className="text-center max-w-3xl mx-auto backdrop-blur-sm rounded-2xl p-8 md:p-12 transition-all duration-500 group relative overflow-hidden"
           style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
         >
-          <div className="absolute -top-20 -right-20 w-40 h-40 bg-bordeaux-500/5 rounded-full blur-3xl group-hover:bg-bordeaux-500/10 transition-all duration-700" />
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-champagne-400/5 rounded-full blur-3xl group-hover:bg-champagne-400/10 transition-all duration-700" />
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-bordeaux-400 to-champagne-300 bg-clip-text text-transparent relative">
+          <div className="absolute -top-20 -right-20 w-40 h-40 bg-navy-500/5 rounded-full blur-3xl group-hover:bg-navy-500/10 transition-all duration-700" />
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-slate-400/5 rounded-full blur-3xl group-hover:bg-slate-400/10 transition-all duration-700" />
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent relative">
             {t.about.title}
           </h3>
           <p className="leading-relaxed text-lg relative" style={{ color: "var(--text-secondary)" }}>

@@ -21,43 +21,43 @@ export default function Footer({ name }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
           <div className="group">
             <h4 className="text-lg font-bold mb-3" style={{ color: "var(--text-primary)" }}>
-              TH<span className="text-bordeaux-400 group-hover:text-champagne-300 transition-colors">.</span>
+              TH<span className="text-navy-400 group-hover:text-slate-300 transition-colors">.</span>
             </h4>
-            <p className="text-sm leading-relaxed group-hover:text-champagne-400 transition-colors" style={{ color: "var(--text-muted)" }}>
+            <p className="text-sm leading-relaxed group-hover:text-slate-400 transition-colors" style={{ color: "var(--text-muted)" }}>
               Ingénieur d'État en Génie Informatique (MIAGE)<br />
               Full-Stack Java Spring Boot & React
             </p>
           </div>
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: "var(--text-secondary)" }}>
-              <span className="w-1 h-4 bg-gradient-to-b from-bordeaux-500 to-champagne-400 rounded-full" />
+              <span className="w-1 h-4 bg-gradient-to-b from-navy-500 to-slate-400 rounded-full" />
               Contact
             </h4>
             <ul className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
-              <li className="flex items-center gap-2 hover:text-champagne-400 transition-colors cursor-default">
-                <FaMapMarkerAlt className="text-xs text-bordeaux-400/60" />
+              <li className="flex items-center gap-2 hover:text-slate-400 transition-colors cursor-default">
+                <FaMapMarkerAlt className="text-xs text-navy-400/60" />
                 Casablanca, Maroc
               </li>
-              <li className="flex items-center gap-2 hover:text-champagne-400 transition-colors cursor-default">
-                <FaPhoneAlt className="text-xs text-champagne-400/60" />
+              <li className="flex items-center gap-2 hover:text-slate-400 transition-colors cursor-default">
+                <FaPhoneAlt className="text-xs text-slate-400/60" />
                 +212-691436399
               </li>
-              <li className="flex items-center gap-2 hover:text-champagne-400 transition-colors cursor-default">
-                <FaEnvelope className="text-xs text-bordeaux-400/60" />
+              <li className="flex items-center gap-2 hover:text-slate-400 transition-colors cursor-default">
+                <FaEnvelope className="text-xs text-navy-400/60" />
                 hilalbiktaha@gmail.com
               </li>
             </ul>
           </div>
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: "var(--text-secondary)" }}>
-              <span className="w-1 h-4 bg-gradient-to-b from-champagne-400 to-bordeaux-500 rounded-full" />
+              <span className="w-1 h-4 bg-gradient-to-b from-slate-400 to-navy-500 rounded-full" />
               {t.contact.infoTitle === "Contact Information" ? "Social" : "Réseaux"}
             </h4>
             <div className="flex gap-3">
               {[
-                { icon: FaGithub, href: "https://github.com/tahahb02", hover: "hover:text-bordeaux-400", shadow: "hover:shadow-bordeaux-500/20" },
-                { icon: FaLinkedin, href: "https://linkedin.com/in/taha-hilalbik", hover: "hover:text-champagne-300", shadow: "hover:shadow-champagne-400/20" },
-                { icon: FaEnvelope, href: "mailto:hilalbiktaha@gmail.com", hover: "hover:text-bordeaux-400", shadow: "hover:shadow-bordeaux-500/20" },
+                { icon: FaGithub, href: "https://github.com/tahahb02", hover: "hover:text-navy-400", shadow: "hover:shadow-navy-500/20" },
+                { icon: FaLinkedin, href: "https://linkedin.com/in/taha-hilalbik", hover: "hover:text-slate-300", shadow: "hover:shadow-slate-400/20" },
+                { icon: FaEnvelope, href: "mailto:hilalbiktaha@gmail.com", hover: "hover:text-navy-400", shadow: "hover:shadow-navy-500/20" },
               ].map(({ icon: Icon, href, hover }, i) => (
                 <a
                   key={i}
@@ -66,7 +66,7 @@ export default function Footer({ name }) {
                   rel="noreferrer"
                   className="p-2.5 rounded-lg transition-all hover:scale-110 hover:shadow-sm"
                   style={{ backgroundColor: "var(--bg-secondary)", color: "var(--text-muted)" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = hover.includes("stone") ? "#c9a96e" : "#96183a"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = hover.includes("stone") ? "#8ab2d3" : "#2c5f8a"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-muted)"; }}
                   title={href.includes("github") ? "GitHub" : href.includes("linkedin") ? "LinkedIn" : "Email"}
                 >
@@ -91,7 +91,7 @@ export default function Footer({ name }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-6 right-6 p-3 bg-gradient-to-r from-bordeaux-600 to-bordeaux-700 text-white rounded-xl shadow-lg shadow-bordeaux-500/25 hover:shadow-xl hover:shadow-bordeaux-500/40 hover:scale-110 active:scale-90 transition-all duration-300 cursor-pointer z-40"
+            className="fixed bottom-6 right-6 p-3 bg-gradient-to-r from-navy-600 to-navy-700 text-white rounded-xl shadow-lg shadow-navy-500/25 hover:shadow-xl hover:shadow-navy-500/40 hover:scale-110 active:scale-90 transition-all duration-300 cursor-pointer z-40"
             aria-label={t.scrollTop}
           >
             <FaArrowUp />
