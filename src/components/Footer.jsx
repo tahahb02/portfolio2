@@ -21,7 +21,7 @@ export default function Footer({ name }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
           <div className="group">
             <h4 className="text-lg font-bold mb-3" style={{ color: "var(--text-primary)" }}>
-              TH<span className="text-navy-400 group-hover:text-slate-300 transition-colors">.</span>
+              Taha HILAL BIK<span className="text-navy-400 group-hover:text-slate-300 transition-colors"></span>
             </h4>
             <p className="text-sm leading-relaxed group-hover:text-slate-400 transition-colors" style={{ color: "var(--text-muted)" }}>
               Ingénieur d'État en Génie Informatique (MIAGE)<br />
@@ -95,7 +95,7 @@ export default function Footer({ name }) {
             aria-label={t.scrollTop}
           >
             <FaArrowUp />
-          </motion.button>
+          </motion.button>  
         )}
       </AnimatePresence>
     </footer>

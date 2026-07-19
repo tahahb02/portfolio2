@@ -82,7 +82,7 @@ export default function Navbar({ activeSection, scrollToSection, currentPage, se
           style={{ color: "var(--text-primary)" }}
         >
           <span className="hover:text-navy-400 transition-colors">
-            TH<span className="text-navy-400 group-hover:text-slate-300 transition-colors">.</span>
+            THB<span className="text-navy-400 group-hover:text-slate-300 transition-colors"></span>
           </span>
         </button>
 

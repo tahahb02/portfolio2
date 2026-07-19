@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="50%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="50%" style="stop-color:#FFA500"/>
+      <stop offset="100%" style="stop-color:#FF8C00"/>
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="20" fill="url(#bgGrad)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.05">
+    <line x1="0" y1="50" x2="400" y2="50" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="0" y1="100" x2="400" y2="100" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="0" y1="150" x2="400" y2="150" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="400" y2="200" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="0" y1="250" x2="400" y2="250" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="400" y2="300" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="0" y1="350" x2="400" y2="350" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="50" y1="0" x2="50" y2="400" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="100" y1="0" x2="100" y2="400" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="150" y1="0" x2="150" y2="400" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="400" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="250" y1="0" x2="250" y2="400" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="400" stroke="#FFD700" stroke-width="0.5"/>
+    <line x1="350" y1="0" x2="350" y2="400" stroke="#FFD700" stroke-width="0.5"/>
+  </g>
+
+  <!-- Floating code particles -->
+  <g opacity="0.3" filter="url(#softGlow)">
+    <text x="30" y="60" font-family="monospace" font-size="12" fill="#FFD700">&lt;/&gt;</text>
+    <text x="320" y="80" font-family="monospace" font-size="10" fill="#FFA500">{ }</text>
+    <text x="50" y="340" font-family="monospace" font-size="11" fill="#FFD700">( )</text>
+    <text x="300" y="350" font-family="monospace" font-size="10" fill="#FFA500">[ ]</text>
+    <text x="350" y="180" font-family="monospace" font-size="9" fill="#FFD700">=> </text>
+    <text x="20" y="200" font-family="monospace" font-size="9" fill="#FFA500">fn()</text>
+  </g>
+
+  <!-- Monitor -->
+  <g transform="translate(200, 175)">
+    <!-- Monitor stand -->
+    <rect x="-15" y="70" width="30" height="25" rx="3" fill="#2d2d44"/>
+    <rect x="-35" y="90" width="70" height="8" rx="4" fill="#3d3d54"/>
+
+    <!-- Monitor body -->
+    <rect x="-80" y="-65" width="160" height="135" rx="10" fill="#1a1a2e" stroke="#FFD700" stroke-width="2"/>
+
+    <!-- Screen -->
+    <rect x="-72" y="-57" width="144" height="115" rx="5" fill="url(#screenGrad)"/>
+
+    <!-- Code on screen -->
+    <g font-family="monospace" font-size="8" filter="url(#softGlow)">
+      <text x="-62" y="-38" fill="#FF6B6B">import</text>
+      <text x="-30" y="-38" fill="#98C379"> React </text>
+      <text x="5" y="-38" fill="#FF6B6B">from</text>
+      <text x="22" y="-38" fill="#E5C07B">'react'</text>
+
+      <text x="-62" y="-25" fill="#C678DD">const</text>
+      <text x="-38" y="-25" fill="#61AFEF"> App</text>
+      <text x="-22" y="-25" fill="#ABB2BF">= () =&gt; {</text>
+
+      <text x="-52" y="-12" fill="#C678DD">return</text>
+      <text x="-28" y="-12" fill="#ABB2BF">(</text>
+
+      <text x="-48" y="1" fill="#E06C75">&lt;div</text>
+      <text x="-30" y="1" fill="#D19A66">className</text>
+      <text x="-5" y="1" fill="#ABB2BF">=</text>
+      <text x="2" y="1" fill="#98C379">"premium"</text>
+      <text x="48" y="1" fill="#E06C75">&gt;</text>
+
+      <text x="-42" y="14" fill="#E06C75">&lt;h1&gt;</text>
+      <text x="-22" y="14" fill="#FFD700">Taha</text>
+      <text x="2" y="14" fill="#E06C75">&lt;/h1&gt;</text>
+
+      <text x="-42" y="27" fill="#E06C75">&lt;p&gt;</text>
+      <text x="-26" y="27" fill="#98C379">Full-Stack Dev</text>
+      <text x="50" y="27" fill="#E06C75">&lt;/p&gt;</text>
+
+      <text x="-48" y="40" fill="#ABB2BF">)}</text>
+      <text x="-38" y="40" fill="#ABB2BF">;</text>
+
+      <text x="-62" y="53" fill="#5C6370">// Built with passion</text>
+    </g>
+
+    <!-- Cursor blink -->
+    <rect x="-62" y="58" width="6" height="10" fill="#FFD700" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0;0.8" dur="1.2s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Screen reflection -->
+    <rect x="-72" y="-57" width="144" height="30" rx="5" fill="white" opacity="0.03"/>
+
+    <!-- Camera dot -->
+    <circle cx="0" cy="-62" r="2" fill="#FFD700" opacity="0.6"/>
+  </g>
+
+  <!-- AI/Brain circuit around monitor -->
+  <g transform="translate(200, 175)" opacity="0.4" filter="url(#softGlow)">
+    <!-- Circuit lines -->
+    <path d="M -95,0 Q -110,-30 -90,-55" stroke="#FFD700" fill="none" stroke-width="1.5" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-8" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 95,0 Q 110,-30 90,-55" stroke="#FFD700" fill="none" stroke-width="1.5" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-8" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M -95,20 Q -115,50 -90,70" stroke="#FFA500" fill="none" stroke-width="1.5" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-8" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 95,20 Q 115,50 90,70" stroke="#FFA500" fill="none" stroke-width="1.5" stroke-dasharray="4,4">
+      <animate attributeName="stroke-doffset" values="0;-8" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Circuit nodes -->
+    <circle cx="-95" cy="0" r="4" fill="#FFD700">
+      <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="95" cy="0" r="4" fill="#FFD700">
+      <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="-90" cy="-55" r="3" fill="#FFA500">
+      <animate attributeName="r" values="3;4;3" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="90" cy="-55" r="3" fill="#FFA500">
+      <animate attributeName="r" values="3;4;3" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Initials badge -->
+  <g transform="translate(320, 320)">
+    <circle cx="0" cy="0" r="28" fill="#FFD700" opacity="0.9"/>
+    <text x="0" y="6" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0d1117" text-anchor="middle">TH</text>
+  </g>
+
+  <!-- Decorative corner accents -->
+  <g stroke="#FFD700" fill="none" stroke-width="2" opacity="0.3">
+    <path d="M 15,15 L 15,35 M 15,15 L 35,15"/>
+    <path d="M 385,15 L 385,35 M 385,15 L 365,15"/>
+    <path d="M 15,385 L 15,365 M 15,385 L 35,385"/>
+    <path d="M 385,385 L 385,365 M 385,385 L 365,385"/>
+  </g>
+</svg>
