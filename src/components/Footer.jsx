@@ -56,7 +56,7 @@ export default function Footer({ name }) {
             <div className="flex gap-3">
               {[
                 { icon: FaGithub, href: "https://github.com/tahahb02", hover: "hover:text-navy-400", shadow: "hover:shadow-navy-500/20" },
-                { icon: FaLinkedin, href: "https://linkedin.com/in/taha-hilalbik", hover: "hover:text-slate-300", shadow: "hover:shadow-slate-400/20" },
+                { icon: FaLinkedin, href: "https://linkedin.com/in/TahaHilalBik", hover: "hover:text-slate-300", shadow: "hover:shadow-slate-400/20" },
                 { icon: FaEnvelope, href: "mailto:hilalbiktaha@gmail.com", hover: "hover:text-navy-400", shadow: "hover:shadow-navy-500/20" },
               ].map(({ icon: Icon, href, hover }, i) => (
                 <a
