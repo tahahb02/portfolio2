@@ -7,7 +7,7 @@ export const cvData = {
     email: "hilalbiktaha@gmail.com",
     phone: "+212-691436399",
     location: "Casablanca, Maroc",
-    linkedin: "https://linkedin.com/in/taha-hilalbik",
+    linkedin: "https://www.linkedin.com/in/tahahilalbik/",
     github: "https://github.com/tahahb02"
   },
   education: [
