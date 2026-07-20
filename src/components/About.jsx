@@ -41,8 +41,8 @@ function AnimatedCounter({ value, suffix, label, icon: Icon, delay }) {
 export default function About() {
   const { t } = useLanguage();
   const icons = [FaCode, FaBriefcase, FaGraduationCap, FaAward];
-  const values = [5, 3, 14, 6];
-  const suffixes = ["+", "", "", ""];
+  const values = [5, 3, 14, 7];
+  const suffixes = ["+", "", "", "+"];
 
   return (
     <section className="py-16 sm:py-20 px-4 sm:px-6">
