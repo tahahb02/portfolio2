@@ -201,7 +201,7 @@ export default function Hero({ profile, onContactClick }) {
                 {t.hero.viewCV}
               </button>
               <a
-                href="/Taha%20HILAL%20BIK_CV_Francais.pdf"
+                href="/Taha_HilalBik_CV.pdf"
                 download
                 className="group px-6 md:px-8 py-3 border rounded-xl font-medium transition-all duration-300 flex items-center gap-2 justify-center hover:scale-105 active:scale-95 text-sm md:text-base w-full sm:w-auto"
                 style={{

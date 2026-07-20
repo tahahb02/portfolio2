@@ -4,7 +4,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 
 export default function CVModal({ onClose }) {
   const { t } = useLanguage();
-  const cvUrl = "/Taha%20HILAL%20BIK_CV_Francais.pdf";
+  const cvUrl = "/Taha_HilalBik_CV.pdf";
 
   return (
     <motion.div

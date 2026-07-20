@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaMapMarkerAlt, FaPhoneAlt, FaArrowUp } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaArrowUp } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Footer({ name }) {
@@ -78,7 +78,7 @@ export default function Footer({ name }) {
         </div>
         <div className="pt-6 text-center" style={{ borderTop: "1px solid var(--border-color)" }}>
           <p className="text-sm flex items-center justify-center gap-1 transition-colors" style={{ color: "var(--text-muted)" }}>
-            &copy; 2026 {name}. {t.footer.madeWith} <FaHeart className="text-red-500/70 text-xs hover:text-red-400 hover:scale-125 transition-all" /> {t.footer.in}.
+            &copy; 2026 {name}. {t.footer.madeWith}
           </p>
         </div>
       </div>
