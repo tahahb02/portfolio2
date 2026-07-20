@@ -1,5 +1,5 @@
 const contentFr = {
-  softSkills: ["Esprit d'équipe", "Rigueur", "Autonomie", "Curiosité technique", "Gestion des priorités"],
+  softSkills: ["Esprit d'équipe", "Rigueur", "Autonomie", "Curiosité technique", "Gestion des priorités", "Créativité"],
   langLevels: { "Langue maternelle": 100, "Bilingue": 85, "Avancé": 75, "Intermédiaire": 55, "Débutant": 40 },
   experiences: [
     {
@@ -25,6 +25,7 @@ const contentFr = {
     }
   ],
   projects: [
+    { title: "EasyJob", desc: "Plateforme de recrutement intelligente pour le marché marocain : scraping multi-sources, candidature en 1 clic, IA multilingue (FR/AR/EN), matching intelligent et dashboard recruteur.", github: "https://github.com/tahahb02/EasyJob", live: "https://easyjob-theta.vercel.app/", featured: true },
     { title: "MedCare AI", desc: "Plateforme médicale intelligente digitalisant les cabinets : gestion des patients, téléconsultation, IA clinique, prescriptions électroniques et suivi santé.", github: "https://github.com/tahahb02/MedCare-AI", live: "https://medcare-ai-jet.vercel.app", featured: true },
     { title: "SmartLife AI", desc: "Assistant quotidien intelligent : budget IA, tâches Kanban, médicaments, scanner de factures, assistant vocal et recommandations personnalisées.", github: "https://github.com/tahahb02/Smart-Life-AI", live: "https://smartlife-ai-eight.vercel.app", featured: true },
     { title: "Smart Recruiter", desc: "Matching intelligent entre offres et CVs via LLM (Ollama)" },
@@ -57,7 +58,7 @@ const contentFr = {
 };
 
 const contentEn = {
-  softSkills: ["Team Spirit", "Rigor", "Autonomy", "Technical Curiosity", "Priority Management"],
+  softSkills: ["Team Spirit", "Rigor", "Autonomy", "Technical Curiosity", "Priority Management", "Creativity"],
   langLevels: { "Langue maternelle": 100, "Bilingue": 85, "Avancé": 75, "Intermédiaire": 55, "Débutant": 40 },
   experiences: [
     {
@@ -83,6 +84,7 @@ const contentEn = {
     }
   ],
   projects: [
+    { title: "EasyJob", desc: "Smart recruitment platform for the Moroccan market: multi-source scraping, 1-click application, multilingual AI (FR/AR/EN), intelligent matching and recruiter dashboard.", github: "https://github.com/tahahb02/EasyJob", live: "https://easyjob-theta.vercel.app/", featured: true },
     { title: "MedCare AI", desc: "Smart medical platform digitizing clinics: patient management, teleconsultation, clinical AI, e-prescriptions and health tracking.", github: "https://github.com/tahahb02/MedCare-AI", live: "https://medcare-ai-jet.vercel.app", featured: true },
     { title: "SmartLife AI", desc: "Smart daily assistant: AI budget, Kanban tasks, medication tracker, invoice scanner, voice assistant and personalized recommendations.", github: "https://github.com/tahahb02/Smart-Life-AI", live: "https://smartlife-ai-eight.vercel.app", featured: true },
     { title: "Smart Recruiter", desc: "Intelligent matching between job offers and CVs via LLM (Ollama)" },
@@ -115,7 +117,7 @@ const contentEn = {
 };
 
 const contentDe = {
-  softSkills: ["Teamgeist", "Genauigkeit", "Eigenständigkeit", "Technische Neugier", "Prioritätenmanagement"],
+  softSkills: ["Teamgeist", "Genauigkeit", "Eigenständigkeit", "Technische Neugier", "Prioritätenmanagement", "Kreativität"],
   langLevels: { "Langue maternelle": 100, "Bilingue": 85, "Avancé": 75, "Intermédiaire": 55, "Débutant": 40 },
   experiences: [
     {
@@ -141,6 +143,7 @@ const contentDe = {
     }
   ],
   projects: [
+    { title: "EasyJob", desc: "Intelligente Rekrutierungsplattform für den marokkanischen Markt: Multi-Quellen-Scraping, 1-Klick-Bewerbung, mehrsprachige KI (FR/AR/EN), intelligentes Matching und Rekruter-Dashboard.", github: "https://github.com/tahahb02/EasyJob", live: "https://easyjob-theta.vercel.app/", featured: true },
     { title: "MedCare AI", desc: "Intelligente medizinische Plattform zur Digitalisierung von Praxen: Patientenverwaltung, Telemedizin, klinische KI, E-Rezepte und Gesundheitsverfolgung.", github: "https://github.com/tahahb02/MedCare-AI", live: "https://medcare-ai-jet.vercel.app", featured: true },
     { title: "SmartLife AI", desc: "Intelligenter Tagesassistent: KI-Budget, Kanban-Aufgaben, Medikamentenverfolgung, Rechnungsscanner, Sprachassistent und personalisierte Empfehlungen.", github: "https://github.com/tahahb02/Smart-Life-AI", live: "https://smartlife-ai-eight.vercel.app", featured: true },
     { title: "Smart Recruiter", desc: "Intelligentes Matching zwischen Stellenangeboten und Lebensläufen via LLM (Ollama)" },
@@ -178,7 +181,7 @@ export const translations = {
   fr: {
     nav: { home: "Accueil", skills: "Compétences", experience: "Expériences", projects: "Projets", certifications: "Certifications", contact: "Contact" },
     hero: { contactBtn: "Contactez-moi", downloadBtn: "Télécharger CV", viewCV: "Consulter CV", close: "Fermer" },
-    about: { title: "À Propos", desc: "Ingénieur diplômé de l'EMSI, je combine une solide maîtrise des environnements Java/Spring Boot et des architectures web réactives avec React, enrichie d'une forte orientation vers l'intégration de l'intelligence artificielle locale." },
+    about: { title: "À Propos", desc: "Ingénieur d'État en Génie Informatique (MIAGE), passionné par le développement Full Stack et la conception d'applications web modernes. Expérimenté dans le développement d'applications utilisant des architectures REST, les bases de données SQL/NoSQL et les pratiques Agile. À l'aise avec plusieurs écosystèmes, notamment Java/Spring Boot, React, Node.js/Express et MongoDB, avec un intérêt particulier pour l'intégration de solutions d'Intelligence Artificielle. Curieux, autonome et orienté qualité logicielle, je recherche des projets innovants où je peux contribuer à la création de solutions performantes et évolutives." },
     stats: [{ label: "Années d'études" }, { label: "Stages" }, { label: "Certifications" }, { label: "Projets" }],
     skills: { title: "Compétences Techniques" },
     experience: { title: "Expériences Professionnelles", project: "Projet" },
@@ -197,7 +200,7 @@ export const translations = {
   en: {
     nav: { home: "Home", skills: "Skills", experience: "Experience", projects: "Projects", certifications: "Certifications", contact: "Contact" },
     hero: { contactBtn: "Contact Me", downloadBtn: "Download CV", viewCV: "View CV", close: "Close" },
-    about: { title: "About Me", desc: "EMSI graduate engineer combining strong expertise in Java/Spring Boot environments and reactive web architectures with React, enriched by a strong focus on local AI integration." },
+    about: { title: "About Me", desc: "State Engineer in Computer Science (MIAGE), passionate about Full Stack development and modern web application design. Experienced in building applications using REST architectures, SQL/NoSQL databases, and Agile practices. Comfortable with multiple ecosystems including Java/Spring Boot, React, Node.js/Express and MongoDB, with a particular interest in Artificial Intelligence integration. Curious, autonomous and focused on software quality, I seek innovative projects where I can contribute to building high-performing and scalable solutions." },
     stats: [{ label: "Years of Study" }, { label: "Internships" }, { label: "Certifications" }, { label: "Projects" }],
     skills: { title: "Technical Skills" },
     experience: { title: "Professional Experience", project: "Project" },
@@ -216,7 +219,7 @@ export const translations = {
   de: {
     nav: { home: "Startseite", skills: "Fähigkeiten", experience: "Erfahrung", projects: "Projekte", certifications: "Zertifikate", contact: "Kontakt" },
     hero: { contactBtn: "Kontaktieren Sie mich", downloadBtn: "Lebenslauf herunterladen", viewCV: "Lebenslauf anzeigen", close: "Schließen" },
-    about: { title: "Über mich", desc: "Absolvent der EMSI, vereine ich fundierte Kenntnisse in Java/Spring Boot und reaktiven Webarchitekturen mit React, angereichert durch einen starken Fokus auf lokale KI-Integration." },
+    about: { title: "Über mich", desc: "Staatsingenieur in Informatik (MIAGE), leidenschaftlich entwickelnd im Full-Stack-Bereich und der Konzeption moderner Webanwendungen. Erfahren in der Entwicklung von Anwendungen mit REST-Architekturen, SQL/NoSQL-Datenbanken und Agile-Praktiken. Vertraut mit mehreren Ökosystemen, darunter Java/Spring Boot, React, Node.js/Express und MongoDB, mit besonderem Interesse an der Integration von KI-Lösungen. Neugierig, eigenständig und auf Softwarequalität ausgerichtet, suche ich nach innovativen Projekten, zu denen ich leistungsstarke und skalierbare Lösungen beitragen kann." },
     stats: [{ label: "Studienjahre" }, { label: "Praktika" }, { label: "Zertifizierungen" }, { label: "Projekte" }],
     skills: { title: "Technische Fähigkeiten" },
     experience: { title: "Berufserfahrung", project: "Projekt" },

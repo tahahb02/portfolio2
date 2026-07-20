@@ -4,6 +4,7 @@ import { fadeInUp, staggerContainer } from "../constants/animations";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const projectTechs = {
+  EasyJob: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Socket.io", "Puppeteer", "OpenAI"],
   "MedCare AI": ["React", "Vite", "Tailwind CSS", "Node.js", "MongoDB", "Socket.io", "JWT", "AI"],
   "SmartLife AI": ["React", "Vite", "Tailwind CSS", "Framer Motion", "OpenAI", "Gemini", "Docker", "PWA"],
   "Smart Recruiter": ["Java", "Spring Boot", "React JS", "Ollama", "MySQL"],

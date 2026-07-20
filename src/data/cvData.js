@@ -2,8 +2,8 @@ export const cvData = {
   profile: {
     name: "Taha HILAL BIK",
     title: "Ingénieur d'État en Génie Informatique spécialité MIAGE",
-    subTitle: "Ingénieur en informatique (MIAGE), spécialisé en développement full-stack avec Java Spring Boot et React, et passionné par l'architecture logicielle et l'intégration de l'IA.",
-    description: "Expérimenté dans des secteurs exigeants (aéronautique, agroalimentaire), je suis reconnu pour ma rigueur, ma curiosité technique et mon agilité à résoudre des problèmes complexes.",
+    subTitle: "Ingénieur d'État en Génie Informatique (MIAGE), passionné par le développement Full Stack et la conception d'applications web modernes. Expérimenté dans les architectures REST, les bases de données SQL/NoSQL et les pratiques Agile.",
+    description: "À l'aise avec plusieurs écosystèmes, notamment Java/Spring Boot, React, Node.js/Express et MongoDB, avec un intérêt particulier pour l'intégration de solutions d'Intelligence Artificielle. Curieux, autonome et orienté qualité logicielle, je recherche des projets innovants où je peux contribuer à la création de solutions performantes et évolutives.",
     email: "hilalbiktaha@gmail.com",
     phone: "+212-691436399",
     location: "Casablanca, Maroc",
@@ -16,11 +16,11 @@ export const cvData = {
     { dates: "2020 - 2022", title: "Années préparatoires", institution: "École Marocaine des Sciences de l'Ingénieur (EMSI)" },
     { dates: "2019-2020", title: "Baccalauréat physique chimie option français", institution: "Mention Bien" }
   ],
-  skills: {
-    languages: ["Java", "Python", "C/C++", "C#", "PHP", "JavaScript"],
-    frameworks: ["Spring Boot", "Django", "React JS", "Angular", "Thymeleaf"],
-    databases: ["MySQL", "PostgreSQL", "SQL Server", "Oracle"],
-    tools: ["Intellij", "Eclipse", "VS Code", "Git", "GitHub", "Jira"],
+    skills: {
+    languages: ["Java", "Python", "C/C++", "PHP", "JavaScript"],
+    frameworks: ["Spring Boot", "React JS", "Node.js", "Express", "Django", "Thymeleaf"],
+    databases: ["MySQL", "MongoDB", "PostgreSQL"],
+    tools: ["VS Code", "IntelliJ", "Git", "GitHub", "Jira", "Docker"],
     methods: ["Agile/Scrum", "UML", "CI/CD", "REST API"],
     systems: ["Windows", "Linux"]
   },
@@ -40,7 +40,7 @@ export const cvData = {
     { name: "SAP Fundamentals", pdf: "/certif SAP Fundamentals.pdf", img: "/certs/sap.png" },
     { name: "Unix System Basics", pdf: "/certif Unix System Basics.pdf", img: "/certs/unix.png" },
   ],
-  softSkills: ["Esprit d'équipe", "rigueur", "autonomie", "curiosité technique", "gestion des priorités"],
+  softSkills: ["Esprit d'équipe", "Rigueur", "Autonomie", "Curiosité technique", "Gestion des priorités", "Créativité"],
   languages: [
     { name: "Arabe", level: "Langue maternelle" },
     { name: "Français", level: "Bilingue" },
@@ -86,6 +86,7 @@ export const cvData = {
     }
   ],
   academicProjects: [
+    { title: "EasyJob", desc: "Plateforme de recrutement intelligente pour le marché marocain : scraping multi-sources, candidature en 1 clic, IA multilingue (FR/AR/EN), matching intelligent et dashboard recruteur.", github: "https://github.com/tahahb02/EasyJob", live: "https://easyjob-theta.vercel.app/", featured: true },
     { title: "MedCare AI", desc: "Plateforme médicale intelligente digitalisant les cabinets : gestion des patients, téléconsultation, IA clinique, prescriptions électroniques et suivi santé.", github: "https://github.com/tahahb02/MedCare-AI", live: "https://medcare-ai-jet.vercel.app", featured: true },
     { title: "SmartLife AI", desc: "Assistant quotidien intelligent : budget IA, tâches Kanban, médicaments, scanner de factures, assistant vocal et recommandations personnalisées.", github: "https://github.com/tahahb02/Smart-Life-AI", live: "https://smartlife-ai-eight.vercel.app", featured: true },
     { title: "Smart Recruiter", desc: "Matching intelligent entre offres et CVs via LLM (Ollama)" },
