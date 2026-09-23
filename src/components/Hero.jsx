@@ -1,268 +1,265 @@
-import { useState, useCallback, useEffect } from "react";
-import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaEye, FaJava, FaReact } from "react-icons/fa";
-import { SiSpringboot, SiTailwindcss } from "react-icons/si";
-import { fadeInUp, staggerContainer, bounceIn } from "../constants/animations";
+import { useState, useCallback } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
+import { cvUrlFor } from "../constants/cv";
 import CVModal from "./CVModal";
+import MagneticButton from "./ui/MagneticButton";
+import { lineContainer, lineMask, EASE } from "../constants/animations";
 
-const codeSnippets = [
-  { text: '@SpringBootApplication\npublic class PortfolioApplication { ... }', icon: SiSpringboot, color: "#6DB33F" },
-  { text: 'const [portfolio, setPortfolio] = useState({...})', icon: FaReact, color: "#61DAFB" },
-  { text: 'System.out.println("Hello, World!");', icon: FaJava, color: "#ED8B00" },
-  { text: '@Component\npublic class DeveloperService { ... }', icon: FaJava, color: "#ED8B00" },
-  { text: '<div className="min-h-screen bg-slate-950">\n  <Navbar />\n  <Hero />\n</div>', icon: SiTailwindcss, color: "#06B6D4" },
+const marqueeItems = [
+  "React", "Java", "Spring Boot", "Node.js", "Express", "MongoDB",
+  "MySQL", "PostgreSQL", "Python", "Docker", "REST API", "TypeScript",
+  "Tailwind CSS", "AI Integration", "UML", "Agile / Scrum", "CI/CD",
 ];
 
-function CodeTyper() {
-  const [current, setCurrent] = useState(0);
-  const [display, setDisplay] = useState("");
-  const [typing, setTyping] = useState(true);
+function MaskedLine({ children }) {
+  return (
+    <span className="block overflow-hidden pb-[0.08em] -mb-[0.08em]">
+      <motion.span
+        variants={lineMask}
+        className="block will-change-transform"
+      >
+        {children}
+      </motion.span>
+    </span>
+  );
+}
 
-  useEffect(() => {
-    const snippet = codeSnippets[current].text;
-    let idx = 0;
-    let timer;
+function PhotoFrame({ t }) {
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 120, damping: 18 });
+  const sy = useSpring(my, { stiffness: 120, damping: 18 });
+  const imgX = useTransform(sx, (v) => v * 6);
+  const imgY = useTransform(sy, (v) => v * 6);
 
-    if (typing) {
-      timer = setInterval(() => {
-        idx++;
-        setDisplay(snippet.slice(0, idx));
-        if (idx >= snippet.length) {
-          clearInterval(timer);
-          setTimeout(() => setTyping(false), 2000);
-        }
-      }, 30);
-    }
-
-    return () => clearInterval(timer);
-  }, [current, typing]);
-
-  const nextSnippet = useCallback(() => {
-    setTyping(true);
-    setDisplay("");
-    setCurrent((prev) => (prev + 1) % codeSnippets.length);
-  }, []);
-
-  const prevSnippet = useCallback(() => {
-    setTyping(true);
-    setDisplay("");
-    setCurrent((prev) => (prev - 1 + codeSnippets.length) % codeSnippets.length);
-  }, []);
-
-  const CurrentIcon = codeSnippets[current].icon;
+  const onMove = useCallback((e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - rect.left) / rect.width - 0.5);
+    my.set((e.clientY - rect.top) / rect.height - 0.5);
+  }, [mx, my]);
 
   return (
-    <div className="w-full max-w-lg mx-auto">
-      <div
-        className="rounded-2xl overflow-hidden border shadow-2xl transition-colors duration-300"
-        style={{
-          backgroundColor: "var(--bg-card)",
-          borderColor: "var(--border-color)",
-        }}
-      >
-        <div
-          className="flex items-center gap-2 px-4 py-3 border-b"
-          style={{ borderColor: "var(--border-color)", backgroundColor: "var(--bg-secondary)" }}
-        >
-          <span className="w-3 h-3 rounded-full bg-red-500/80" />
-          <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-          <span className="w-3 h-3 rounded-full bg-green-500/80" />
-          <div className="flex-1 flex justify-center gap-2">
-            <button
-              onClick={prevSnippet}
-              className="text-xs px-2 py-0.5 rounded-md transition-colors cursor-pointer"
-              style={{ color: "var(--text-muted)", backgroundColor: "rgba(44,95,138,0.1)" }}
-            >
-              &larr; Prev
-            </button>
-            <button
-              onClick={nextSnippet}
-              className="text-xs px-2 py-0.5 rounded-md transition-colors cursor-pointer"
-              style={{ color: "var(--text-muted)", backgroundColor: "rgba(44,95,138,0.1)" }}
-            >
-              Next &rarr;
-            </button>
-          </div>
-        </div>
-        <div className="p-4 md:p-6 font-mono text-xs md:text-sm leading-relaxed min-h-[120px] relative">
-          <div className="flex items-center gap-2 mb-3" style={{ color: "var(--text-muted)" }}>
-            <CurrentIcon style={{ color: codeSnippets[current].color }} size={16} />
-            <span className="text-xs">{current + 1}/{codeSnippets.length}</span>
-          </div>
-          <pre className="whitespace-pre-wrap" style={{ color: "var(--text-primary)" }}>
-            {display}
-            <motion.span
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.6, repeat: Infinity }}
-              className="inline-block w-[2px] h-[1em] ml-0.5 align-middle"
-              style={{ backgroundColor: "var(--text-primary)" }}
-            />
-          </pre>
-        </div>
+    <motion.figure
+      initial={{ opacity: 0, y: 32 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
+      onMouseMove={onMove}
+      onMouseLeave={() => { mx.set(0); my.set(0); }}
+      className="relative group/photo select-none"
+      data-cursor="OPEN"
+      aria-label={t.hero.metaLabel}
+    >
+      <div className="flex items-center justify-between border border-(--border-color) px-4 py-2.5 bg-(--bg-secondary)">
+        <span className="mono-label">{t.hero.metaLabel}</span>
+        <span className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-(--accent) animate-pulse-dot" />
+          <span className="mono-label">{t.about.statusText}</span>
+        </span>
       </div>
-    </div>
+      <div className="relative overflow-hidden border-x border-b border-(--border-color) aspect-[4/5] bg-(--bg-secondary)">
+        <motion.img
+          src="/profile.png"
+          alt={`Taha HILAL BIK — ${t.about.title}`}
+          style={{ x: imgX, y: imgY, filter: "grayscale(0.12) contrast(1.04)" }}
+          className="h-full w-full object-cover object-top scale-[1.02] transition-[filter] duration-700 group-hover/photo:grayscale-0"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-(--bg-primary)/60 via-transparent to-transparent" />
+        <span className="absolute left-3 top-3 h-6 w-6 border-l border-t border-(--accent)" aria-hidden="true" />
+        <span className="absolute right-3 top-3 h-6 w-6 border-r border-t border-(--accent)" aria-hidden="true" />
+        <span className="absolute bottom-3 left-3 h-6 w-6 border-b border-l border-(--accent)" aria-hidden="true" />
+        <span className="absolute bottom-3 right-3 h-6 w-6 border-b border-r border-(--accent)" aria-hidden="true" />
+      </div>
+      <div className="flex items-center justify-between border border-(--border-color) border-t-0 px-4 py-2.5 bg-(--bg-secondary)">
+        <span className="mono-label">TAHA HILAL BIK</span>
+        <span className="mono-label hidden sm:inline">33.5731° N · 07.5898° W</span>
+      </div>
+    </motion.figure>
   );
 }
 
 export default function Hero({ profile, onContactClick }) {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const { t, lang } = useLanguage();
   const [cvOpen, setCvOpen] = useState(false);
-  const { t } = useLanguage();
 
-  const handleMouseMove = useCallback((e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({
-      x: ((e.clientX - rect.left) / rect.width - 0.5) * 20,
-      y: ((e.clientY - rect.top) / rect.height - 0.5) * 20,
-    });
-  }, []);
-
-  const handleMouseLeave = useCallback(() => setMousePos({ x: 0, y: 0 }), []);
+  const meta = [
+    { value: t.hero.coffee },
+    { value: t.hero.roleLine },
+    { value: t.hero.techLine },
+  ];
 
   return (
-    <section
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="min-h-screen flex items-center relative pt-24 pb-16 overflow-hidden cursor-default"
-    >
-      <div
-        className="absolute top-1/4 -left-32 w-96 h-96 rounded-full blur-[128px] animate-float"
-        style={{ backgroundColor: "rgba(44,95,138,0.08)", transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)` }}
-      />
-      <div
-        className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full blur-[128px] animate-float-delayed"
-        style={{ backgroundColor: "rgba(138,178,211,0.08)", transform: `translate(${mousePos.x * -0.3}px, ${mousePos.y * -0.3}px)` }}
-      />
+    <section className="relative flex min-h-screen flex-col justify-between overflow-hidden px-4 pt-28 pb-0 sm:px-6 lg:px-10">
+      <div className="mx-auto flex w-full max-w-7xl flex-1 items-center">
+        <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
+          <div className="hidden lg:col-span-3 lg:flex lg:flex-col lg:self-stretch lg:justify-between">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="mono-label"
+            >
+              PORTFOLIO — 2026
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col gap-5"
+            >
+              {meta.map((m, i) => (
+                <div key={m.value} className="flex items-baseline gap-3">
+                  <span className="font-mono text-[10px] text-(--accent)" aria-hidden="true">0{i + 1}</span>
+                  <span className="font-mono text-xs tracking-[0.2em] text-(--text-secondary)">
+                    {m.value}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="flex items-center gap-3"
+            >
+              <span className="h-px w-8 bg-(--accent)" aria-hidden="true" />
+              <span className="mono-label">33.5731° N</span>
+            </motion.div>
+          </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="text-center lg:text-left"
-          >
-            <motion.div variants={bounceIn} className="mb-6 inline-block">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-navy-500 via-slate-300 to-navy-500 p-[3px] shadow-lg shadow-navy-500/20 group hover:shadow-navy-500/50 hover:shadow-2xl transition-all duration-500 cursor-pointer mx-auto lg:mx-0">
-                <img
-                  src="/profile.png"
-                  alt={profile.name}
-                  className="w-full h-full rounded-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  loading="eager"
-                  width="144"
-                  height="144"
-                />
-              </div>
+          <div className="lg:col-span-6">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05, ease: EASE }}
+              className="mb-6 flex flex-wrap items-center gap-3"
+            >
+              <span className="flex items-center gap-2 border border-(--border-color) rounded-full px-3 py-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-(--success) animate-pulse-dot" />
+                <span className="mono-label normal-case tracking-[0.12em] text-(--text-secondary)">
+                  {t.hero.availability}
+                </span>
+              </span>
+              <span className="mono-label hidden sm:inline">{t.hero.scroll} ↓</span>
             </motion.div>
 
             <motion.h1
-              variants={fadeInUp}
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-navy-400 via-slate-300 to-navy-400 bg-clip-text text-transparent leading-tight bg-[length:200%_auto] animate-shimmer"
+              variants={lineContainer}
+              initial="hidden"
+              animate="visible"
+              className="text-[clamp(2.9rem,8.5vw,6.75rem)] font-bold leading-[0.95] tracking-tight text-(--text-primary)"
             >
-              {profile.name}
+              <MaskedLine>Taha</MaskedLine>
+              <MaskedLine>
+                <span className="gold-text">HILAL BIK</span>
+              </MaskedLine>
             </motion.h1>
 
-            <motion.h2
-              variants={fadeInUp}
-              className="text-lg md:text-xl font-medium mb-4"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              {profile.title}
-            </motion.h2>
-
             <motion.p
-              variants={fadeInUp}
-              className="leading-relaxed max-w-xl mb-6 text-sm md:text-base"
-              style={{ color: "var(--text-muted)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
+              className="mt-5 font-mono text-xs sm:text-sm tracking-[0.18em] text-(--accent)"
             >
-              {profile.subTitle}
+              FULL-STACK ENGINEER — AI ENTHUSIAST
             </motion.p>
 
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start mb-6">
-              <button
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
+              className="mt-6 max-w-xl text-sm leading-relaxed text-(--text-secondary) sm:text-base"
+            >
+              {t.hero.statement}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6, ease: EASE }}
+              className="mt-8 flex flex-wrap items-center gap-3"
+            >
+              <MagneticButton
                 onClick={onContactClick}
-                className="group relative px-6 md:px-8 py-3 bg-gradient-to-r from-navy-600 to-navy-700 text-white font-medium rounded-xl transition-all duration-300 cursor-pointer overflow-hidden hover:shadow-lg hover:shadow-navy-500/25 hover:scale-105 active:scale-95 text-sm md:text-base w-full sm:w-auto"
+                className="group inline-flex items-center gap-2 rounded-md bg-(--accent) px-6 py-3 text-sm font-semibold text-(--on-accent) transition-[background-color,box-shadow] duration-300 hover:bg-(--accent-soft) hover:shadow-[0_8px_30px_var(--accent-glow)]"
+                data-cursor="LINK"
               >
-                <span className="relative z-10">{t.hero.contactBtn}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-navy-500 to-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </button>
+                {t.hero.contactBtn}
+                <span className="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">→</span>
+              </MagneticButton>
               <button
                 onClick={() => setCvOpen(true)}
-                className="group px-6 md:px-8 py-3 border rounded-xl font-medium transition-all duration-300 flex items-center gap-2 justify-center hover:scale-105 active:scale-95 text-sm md:text-base cursor-pointer w-full sm:w-auto"
-                style={{
-                  borderColor: "var(--border-color)",
-                  color: "var(--text-secondary)",
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(44,95,138,0.5)"; e.currentTarget.style.backgroundColor = "rgba(44,95,138,0.08)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.backgroundColor = "transparent"; }}
+                data-cursor="LINK"
+                className="inline-flex items-center gap-2 rounded-md border border-(--border-strong) bg-transparent px-6 py-3 text-sm font-medium text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:text-(--accent)"
               >
-                <FaEye className="text-sm" />
                 {t.hero.viewCV}
               </button>
               <a
-                href="/Taha_HilalBik_CV.pdf"
+                href={cvUrlFor(lang)}
                 download
-                className="group px-6 md:px-8 py-3 border rounded-xl font-medium transition-all duration-300 flex items-center gap-2 justify-center hover:scale-105 active:scale-95 text-sm md:text-base w-full sm:w-auto"
-                style={{
-                  borderColor: "var(--border-color)",
-                  color: "var(--text-secondary)",
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(138,178,211,0.5)"; e.currentTarget.style.backgroundColor = "rgba(138,178,211,0.08)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.backgroundColor = "transparent"; }}
+                aria-label={t.hero.downloadBtn}
+                data-cursor="LINK"
+                className="grid h-11 w-11 place-items-center rounded-md border border-(--border-strong) text-(--text-secondary) transition-all duration-300 hover:border-(--accent) hover:text-(--accent)"
               >
-                <FaDownload className="text-sm" />
-                {t.hero.downloadBtn}
+                <FaDownload size={14} />
               </a>
             </motion.div>
 
-            <motion.div variants={fadeInUp} className="flex gap-5 justify-center lg:justify-start">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="mt-8 flex items-center gap-6"
+            >
               {[
-                { icon: FaGithub, href: profile.github, hover: "hover:text-navy-400", label: "GitHub" },
-                { icon: FaLinkedin, href: profile.linkedin, hover: "hover:text-slate-300", label: "LinkedIn" },
-                { icon: FaEnvelope, href: `mailto:${profile.email}`, hover: "hover:text-navy-400", label: "Email" },
-              ].map(({ icon: Icon, href, hover, label }) => (
+                { icon: FaGithub, href: profile.github, label: "GitHub" },
+                { icon: FaLinkedin, href: profile.linkedin, label: "LinkedIn" },
+                { icon: FaEnvelope, href: `mailto:${profile.email}`, label: "Email" },
+              ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  title={label}
-                  className={`transition-all duration-300 text-2xl hover:-translate-y-1.5 hover:scale-110`}
-                  style={{ color: "var(--text-muted)" }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = hover.includes("slate") ? "#8ab2d3" : "#2c5f8a" }
-                  onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-muted)"}
+                  data-cursor="LINK"
+                  className="group flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-(--text-secondary) transition-colors duration-200 hover:text-(--accent)"
                 >
-                  <Icon />
+                  <Icon size={15} className="transition-transform duration-300 group-hover:-translate-y-0.5" />
+                  <span className="relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-(--accent) after:transition-all after:duration-300 group-hover:after:w-full">
+                    {label.toUpperCase()}
+                  </span>
                 </a>
               ))}
             </motion.div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block"
-          >
-            <CodeTyper />
-          </motion.div>
+          <div className="mx-auto w-full max-w-xs sm:max-w-sm lg:col-span-3">
+            <PhotoFrame t={t} />
+          </div>
         </div>
       </div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2"
+        transition={{ duration: 0.8, delay: 0.9 }}
+        className="relative mt-16 border-t border-(--hairline) py-4"
+        aria-hidden="true"
       >
-        <div className="w-6 h-10 border-2 rounded-full flex justify-center group cursor-pointer transition-colors" style={{ borderColor: "var(--border-color)" }}>
-          <motion.div
-            className="w-1 h-3 rounded-full mt-2 transition-colors"
-            style={{ backgroundColor: "var(--text-muted)" }}
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
+        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div className="flex w-max animate-marquee gap-10 pr-10">
+            {[...marqueeItems, ...marqueeItems].map((item, i) => (
+              <span
+                key={i}
+                className="flex items-center gap-10 whitespace-nowrap font-mono text-[11px] tracking-[0.25em] text-(--text-muted)"
+              >
+                {item}
+                <span className="text-(--accent)" aria-hidden="true">/</span>
+              </span>
+            ))}
+          </div>
         </div>
       </motion.div>
 

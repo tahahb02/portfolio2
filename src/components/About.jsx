@@ -1,89 +1,111 @@
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { fadeInUp, staggerContainer } from "../constants/animations";
-import { FaCode, FaBriefcase, FaGraduationCap, FaAward } from "react-icons/fa";
+import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
+import SectionHeading from "./ui/SectionHeading";
+import Reveal from "./ui/Reveal";
+import { staggerContainer, fadeUp } from "../constants/animations";
 
-function AnimatedCounter({ value, suffix, label, icon: Icon, delay }) {
+function Counter({ label, value, suffix, delay }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { stiffness: 60, damping: 15 });
-  const rounded = useTransform(springValue, (v) => Math.round(v));
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const mv = useMotionValue(0);
+  const spring = useSpring(mv, { stiffness: 55, damping: 16 });
+  const rounded = useTransform(spring, (v) => Math.round(v));
 
   useEffect(() => {
-    if (isInView) {
-      setTimeout(() => motionValue.set(value), delay * 100);
+    if (inView) {
+      const t = setTimeout(() => mv.set(value), delay);
+      return () => clearTimeout(t);
     }
-  }, [isInView, value, motionValue, delay]);
+  }, [inView, value, delay, mv]);
 
   return (
     <motion.div
       ref={ref}
-      variants={fadeInUp}
-      className="backdrop-blur-sm rounded-xl p-5 text-center hover:-translate-y-1 transition-all duration-300 group cursor-default"
-      style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-      onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(44,95,138,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(44,95,138,0.1)"; }}
-      onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; }}
+      variants={fadeUp}
+      className="flex flex-col gap-1 border-l-2 border-(--accent) bg-(--bg-card) px-5 py-6 transition-colors duration-300 hover:bg-(--bg-card-hover)"
+      data-cursor="LINK"
     >
-      <div className="p-2.5 rounded-xl bg-navy-500/10 w-fit mx-auto mb-3 group-hover:bg-navy-500/20 group-hover:scale-110 transition-all duration-300">
-        <Icon className="text-navy-400/80 text-lg group-hover:text-navy-300 transition-colors" />
-      </div>
-      <motion.div className="text-2xl font-bold group-hover:text-navy-300 transition-colors" style={{ color: "var(--text-primary)" }}>
-        <motion.span>{rounded}</motion.span>
-        {suffix}
-      </motion.div>
-      <div className="text-xs mt-1 group-hover:text-slate-400 transition-colors" style={{ color: "var(--text-muted)" }}>{label}</div>
+      <span className="flex items-baseline gap-1">
+        <span className="text-4xl font-bold tabular-nums text-(--accent)" aria-hidden="true">
+          <motion.span>{rounded}</motion.span>
+          {suffix && <span className="text-2xl">{suffix}</span>}
+        </span>
+      </span>
+      <span className="mono-label">{label}</span>
     </motion.div>
   );
 }
 
 export default function About() {
   const { t } = useLanguage();
-  const icons = [FaCode, FaBriefcase, FaGraduationCap, FaAward];
-  const values = [5, 3, 14, 7];
-  const suffixes = ["+", "", "", "+"];
 
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-          className="text-center max-w-3xl mx-auto backdrop-blur-sm rounded-2xl p-8 md:p-12 transition-all duration-500 group relative overflow-hidden"
-          style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-        >
-          <div className="absolute -top-20 -right-20 w-40 h-40 bg-navy-500/5 rounded-full blur-3xl group-hover:bg-navy-500/10 transition-all duration-700" />
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-slate-400/5 rounded-full blur-3xl group-hover:bg-slate-400/10 transition-all duration-700" />
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent relative">
-            {t.about.title}
-          </h3>
-          <p className="leading-relaxed text-lg relative" style={{ color: "var(--text-secondary)" }}>
-            {t.about.desc}
-          </p>
-        </motion.div>
+    <section className="relative px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-5">
+          <div className="lg:sticky lg:top-28">
+            <SectionHeading index={2} label={t.about.label} title={t.about.title} />
+            <Reveal delay={0.1} className="mt-8">
+              <p className="text-lg leading-relaxed text-(--text-primary)">{t.about.intro}</p>
+            </Reveal>
+            <Reveal delay={0.18} className="mt-5">
+              <p className="text-sm leading-relaxed text-(--text-secondary)">{t.about.philosophy}</p>
+            </Reveal>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 max-w-3xl mx-auto"
-        >
-          {t.stats.map((stat, idx) => (
-            <AnimatedCounter
-              key={stat.label}
-              icon={icons[idx]}
-              value={values[idx]}
-              suffix={suffixes[idx]}
-              label={stat.label}
-              delay={idx}
-            />
-          ))}
-        </motion.div>
+            <Reveal delay={0.26} className="mt-8">
+              <div className="inline-flex items-center gap-3 border border-(--border-color) bg-(--bg-card) px-4 py-3">
+                <FaMapMarkerAlt size={14} className="text-(--accent)" />
+                <span className="mono-label">{t.about.locationLabel} : {t.hero.coffee}</span>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.34} className="mt-6">
+              <div className="flex flex-wrap gap-2">
+                {t.about.domains.map((d) => (
+                  <span
+                    key={d}
+                    className="border border-(--border-color) px-3 py-1.5 font-mono text-[10px] tracking-[0.2em] text-(--text-secondary) transition-colors duration-200 hover:border-(--accent) hover:text-(--accent)"
+                  >
+                    {d}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        <div className="lg:col-span-6 lg:col-start-7">
+          <Reveal>
+            <p className="text-sm leading-relaxed text-(--text-secondary) md:text-base">{t.about.desc}</p>
+          </Reveal>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="mt-10 grid grid-cols-1 gap-px overflow-hidden border border-(--border-color) bg-(--hairline) sm:grid-cols-2"
+          >
+            {t.about.stats.map((stat, i) => (
+              <Counter
+                key={stat.label}
+                label={stat.label}
+                value={stat.value}
+                suffix={stat.suffix}
+                delay={150 + i * 120}
+              />
+            ))}
+          </motion.div>
+
+          <Reveal delay={0.2} className="mt-8 flex items-center gap-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-(--success) animate-pulse-dot" />
+            <span className="mono-label">{t.about.statusTitle} — {t.about.statusText}</span>
+          </Reveal>
+        </div>
       </div>
+      <div className="mx-auto mt-16 max-w-7xl hairline" aria-hidden="true" />
     </section>
   );
 }

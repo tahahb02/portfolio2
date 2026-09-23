@@ -86,12 +86,12 @@ export const cvData = {
     }
   ],
   academicProjects: [
-    { title: "EasyJob", desc: "Plateforme de recrutement intelligente pour le marché marocain : scraping multi-sources, candidature en 1 clic, IA multilingue (FR/AR/EN), matching intelligent et dashboard recruteur.", github: "https://github.com/tahahb02/EasyJob", live: "https://easyjob-theta.vercel.app/", featured: true },
-    { title: "MedCare AI", desc: "Plateforme médicale intelligente digitalisant les cabinets : gestion des patients, téléconsultation, IA clinique, prescriptions électroniques et suivi santé.", github: "https://github.com/tahahb02/MedCare-AI", live: "https://medcare-ai-jet.vercel.app", featured: true },
-    { title: "SmartLife AI", desc: "Assistant quotidien intelligent : budget IA, tâches Kanban, médicaments, scanner de factures, assistant vocal et recommandations personnalisées.", github: "https://github.com/tahahb02/Smart-Life-AI", live: "https://smartlife-ai-eight.vercel.app", featured: true },
-    { title: "Smart Recruiter", desc: "Matching intelligent entre offres et CVs via LLM (Ollama)" },
-    { title: "BookHub", desc: "Plateforme de gestion et distribution d'E-books (React / Spring Boot)" },
-    { title: "QuizzApp (Android)", desc: "Application mobile de quiz pour permis de conduire" },
-    { title: "FitTrack Web App", desc: "Calculateur de calories & suivi nutritionnel" }
+    { title: "EasyJob", desc: "Plateforme de recrutement intelligente pour le marché marocain : scraping multi-sources, candidature en 1 clic, IA multilingue (FR/AR/EN), matching intelligent et dashboard recruteur.", github: "https://github.com/tahahb02/EasyJob", live: "https://easyjob-theta.vercel.app/", featured: true, img: "/projects/easyjob.svg", category: "AI · WEB · FULL-STACK" },
+    { title: "MedCare AI", desc: "Plateforme médicale intelligente digitalisant les cabinets : gestion des patients, téléconsultation, IA clinique, prescriptions électroniques et suivi santé.", github: "https://github.com/tahahb02/MedCare-AI", live: "https://medcare-ai-jet.vercel.app", featured: true, img: "/projects/medcare-ai.svg", category: "AI · HEALTH · PLATFORM" },
+    { title: "SmartLife AI", desc: "Assistant quotidien intelligent : budget IA, tâches Kanban, médicaments, scanner de factures, assistant vocal et recommandations personnalisées.", github: "https://github.com/tahahb02/Smart-Life-AI", live: "https://smartlife-ai-eight.vercel.app", featured: true, img: "/projects/smartlife-ai.svg", category: "AI · LIFESTYLE · PWA" },
+    { title: "Smart Recruiter", desc: "Matching intelligent entre offres et CVs via LLM (Ollama)", github: "https://github.com/tahahb02/Smart-Recruiter", img: "/projects/smart-recruiter.svg", category: "AI · RECRUITMENT · LLM" },
+    { title: "BookHub", desc: "Plateforme de gestion et distribution d'E-books (React / Spring Boot)", img: "/projects/bookhub.svg", category: "WEB · E-COMMERCE" },
+    { title: "QuizzApp (Android)", desc: "Application mobile de quiz pour permis de conduire", img: "/projects/quizzapp.svg", category: "MOBILE · ANDROID" },
+    { title: "FitTrack Web App", desc: "Calculateur de calories & suivi nutritionnel", img: "/projects/fittrack.svg", category: "WEB · HEALTH" }
   ]
 };

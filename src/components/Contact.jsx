@@ -1,182 +1,263 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaPaperPlane, FaCheckCircle, FaArrowLeft } from "react-icons/fa";
-import { slideInLeft, slideInRight, fadeInUp } from "../constants/animations";
+import {
+  FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub,
+  FaPaperPlane, FaCheckCircle, FaArrowLeft, FaCopy, FaCheck,
+} from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
+import SectionHeading from "./ui/SectionHeading";
+import { fadeUp, EASE } from "../constants/animations";
+
+const initialForm = { name: "", email: "", subject: "", message: "" };
 
 export default function Contact({ profile, onBack }) {
   const { t } = useLanguage();
-  const [formState, setFormState] = useState({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState(initialForm);
+  const [errors, setErrors] = useState({});
+  const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleChange = (e) => {
-    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const validate = () => {
+    const next = {};
+    if (!form.name.trim()) next.name = true;
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) next.email = true;
+    if (!form.subject.trim()) next.subject = true;
+    if (!form.message.trim()) next.message = true;
+    setErrors(next);
+    return Object.keys(next).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formState.name || !formState.email || !formState.subject || !formState.message) return;
-    setSent(true);
+    if (!validate()) return;
+    setSending(true);
     setTimeout(() => {
-      alert("Message envoyé avec succès ! (Simulation Front-End)");
-      setSent(false);
-      setFormState({ name: "", email: "", subject: "", message: "" });
-    }, 1500);
+      setSending(false);
+      setSent(true);
+      setForm(initialForm);
+      setTimeout(() => setSent(false), 2600);
+    }, 1100);
   };
 
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {}
+  };
+
+  const fields = [
+    { name: "name", label: t.contact.name, type: "text", autoComplete: "name" },
+    { name: "email", label: t.contact.email, type: "email", autoComplete: "email" },
+    { name: "subject", label: t.contact.subject, type: "text", autoComplete: "off" },
+  ];
+
+  const inputCls = (err) =>
+    `w-full rounded-none border-b bg-transparent px-0 py-3 text-sm text-(--text-primary) outline-none transition-colors duration-300 placeholder:text-(--text-muted) focus:ring-0 ${
+      err ? "border-(--danger)" : "border-(--border-strong) focus:border-(--accent)"
+    }`;
+
+  const labelCls = (err) =>
+    `mb-1 block font-mono text-[10px] tracking-[0.18em] uppercase transition-colors duration-300 ${
+      err ? "text-(--danger)" : "text-(--text-muted)"
+    }`;
+
   return (
-    <section className="min-h-screen py-24 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="mb-8">
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 cursor-pointer"
-            style={{ color: "var(--text-secondary)" }}
-            onMouseEnter={(e) => e.target.style.color = "#2c5f8a"}
-            onMouseLeave={(e) => e.target.style.color = "var(--text-secondary)"}
-          >
-            <FaArrowLeft size={14} />
-            {t.nav.home}
-          </button>
-        </motion.div>
+    <section className="px-4 pb-20 pt-28 sm:px-6 sm:pb-28 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl">
+        <button
+          onClick={onBack}
+          data-cursor="LINK"
+          className="mb-10 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-(--text-secondary) transition-colors duration-200 hover:text-(--accent)"
+        >
+          <FaArrowLeft size={11} />
+          {t.contact.backHome.toUpperCase()}
+        </button>
+
+        <SectionHeading index={9} label={t.contact.label} title={t.contact.title} />
 
         <motion.h3
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="text-2xl md:text-3xl font-bold mb-12 bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+          className="mt-6 max-w-3xl text-[clamp(1.7rem,4.5vw,3.4rem)] font-bold leading-[1.05] tracking-tight text-(--text-primary)"
         >
-          {t.contact.title}
+          {t.contact.headline}
         </motion.h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" className="space-y-6">
+              <div className="border border-(--border-color) bg-(--bg-card)">
+                <p className="border-b border-(--hairline) px-5 py-3 mono-label">{t.contact.infoTitle.toUpperCase()}</p>
+                <ul className="divide-y divide-(--hairline)">
+                  <li className="flex items-center justify-between px-5 py-4">
+                    <span className="flex items-center gap-3 text-sm text-(--text-secondary)">
+                      <FaEnvelope size={13} className="text-(--accent)" />
+                      {profile.email}
+                    </span>
+                    <button
+                      onClick={copyEmail}
+                      data-cursor="LINK"
+                      aria-label={t.contact.copyEmail}
+                      title={t.contact.copyEmail}
+                      className="flex items-center gap-1.5 font-mono text-[10px] tracking-[0.14em] text-(--text-muted) transition-colors duration-200 hover:text-(--accent)"
+                    >
+                      <AnimatePresence mode="wait" initial={false}>
+                        {copied ? (
+                          <motion.span
+                            key="ok"
+                            initial={{ opacity: 0, scale: 0.6 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center gap-1 text-(--success)"
+                          >
+                            <FaCheck size={10} /> {t.contact.copied.toUpperCase()}
+                          </motion.span>
+                        ) : (
+                          <motion.span
+                            key="copy"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center gap-1"
+                          >
+                            <FaCopy size={10} /> {t.contact.copyEmail.toUpperCase()}
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                    </button>
+                  </li>
+                  <li className="flex items-center gap-3 px-5 py-4 text-sm text-(--text-secondary)">
+                    <FaPhoneAlt size={13} className="text-(--accent)" />
+                    {profile.phone}
+                  </li>
+                  <li className="flex items-center gap-3 px-5 py-4 text-sm text-(--text-secondary)">
+                    <FaMapMarkerAlt size={13} className="text-(--accent)" />
+                    {t.contact.address}
+                  </li>
+                </ul>
+                <div className="flex gap-3 border-t border-(--hairline) p-4">
+                  <a
+                    href={profile.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="LINK"
+                    className="flex flex-1 items-center justify-center gap-2 border border-(--border-color) py-2.5 font-mono text-[10px] tracking-[0.16em] text-(--text-secondary) transition-colors duration-200 hover:border-(--accent) hover:text-(--accent)"
+                  >
+                    <FaLinkedin size={12} /> LINKEDIN
+                  </a>
+                  <a
+                    href={profile.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="LINK"
+                    className="flex flex-1 items-center justify-center gap-2 border border-(--border-color) py-2.5 font-mono text-[10px] tracking-[0.16em] text-(--text-secondary) transition-colors duration-200 hover:border-(--accent) hover:text-(--accent)"
+                  >
+                    <FaGithub size={13} /> GITHUB
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
           <motion.div
-            variants={slideInLeft}
+            variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="backdrop-blur-sm rounded-2xl p-8 transition-all duration-500"
-            style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
+            className="lg:col-span-7"
           >
-            <h4 className="text-xl font-semibold mb-6" style={{ color: "var(--text-primary)" }}>{t.contact.formTitle}</h4>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {[{ name: "name", label: t.contact.name, type: "text", placeholder: t.contact.name },
-                { name: "email", label: t.contact.email, type: "email", placeholder: "email@example.com" },
-                { name: "subject", label: t.contact.subject, type: "text", placeholder: t.contact.subject },
-              ].map((field) => (
-                <div className="group" key={field.name}>
-                  <label className="block text-sm mb-2 group-focus-within:text-navy-400 transition-colors" style={{ color: "var(--text-muted)" }}>{field.label}</label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    value={formState[field.name]}
-                    onChange={handleChange}
-                    placeholder={field.placeholder}
-                    required
-                    className="w-full px-4 py-3 rounded-xl transition-all placeholder:text-slate-500"
-                    style={{
-                      backgroundColor: "var(--bg-secondary)",
-                      color: "var(--text-primary)",
-                      border: "1px solid var(--border-color)",
-                    }}
-                    onFocus={(e) => { e.target.style.borderColor = "rgba(44,95,138,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(44,95,138,0.1)"; }}
-                    onBlur={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.boxShadow = "none"; }}
-                  />
-                </div>
-              ))}
-              <div className="group">
-                <label className="block text-sm mb-2 group-focus-within:text-navy-400 transition-colors" style={{ color: "var(--text-muted)" }}>{t.contact.message}</label>
+            <form onSubmit={handleSubmit} noValidate className="border border-(--border-color) bg-(--bg-card) p-6 md:p-8">
+              <p className="mb-8 mono-label">{t.contact.formTitle.toUpperCase()}</p>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {fields.map((field) => {
+                  const err = errors[field.name];
+                  return (
+                    <label key={field.name} className="block" htmlFor={field.name}>
+                      <span className={labelCls(err)}>{field.label}</span>
+                      <input
+                        id={field.name}
+                        type={field.type}
+                        name={field.name}
+                        value={form[field.name]}
+                        onChange={handleChange}
+                        autoComplete={field.autoComplete}
+                        aria-invalid={!!err}
+                        placeholder={field.name === "email" ? "email@example.com" : field.label}
+                        className={inputCls(err)}
+                      />
+                    </label>
+                  );
+                })}
+              </div>
+              <label className="mt-6 block" htmlFor="message">
+                <span className={labelCls(errors.message)}>{t.contact.message}</span>
                 <textarea
-                  rows={5}
+                  id="message"
                   name="message"
-                  value={formState.message}
+                  rows={5}
+                  value={form.message}
                   onChange={handleChange}
+                  aria-invalid={!!errors.message}
                   placeholder="..."
-                  required
-                  className="w-full px-4 py-3 rounded-xl transition-all placeholder:text-slate-500 resize-none"
-                  style={{
-                    backgroundColor: "var(--bg-secondary)",
-                    color: "var(--text-primary)",
-                    border: "1px solid var(--border-color)",
-                  }}
-                  onFocus={(e) => { e.target.style.borderColor = "rgba(44,95,138,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(44,95,138,0.1)"; }}
-                  onBlur={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.boxShadow = "none"; }}
+                  className={`${inputCls(errors.message)} resize-none`}
                 />
+              </label>
+
+              <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <button
+                  type="submit"
+                  disabled={sending}
+                  data-cursor="LINK"
+                  className="group inline-flex items-center gap-2 bg-(--accent) px-7 py-3.5 text-sm font-semibold text-(--on-accent) transition-colors duration-300 hover:bg-(--accent-soft) disabled:opacity-60"
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {sending ? (
+                      <motion.span
+                        key="sending"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        className="flex items-center gap-2"
+                      >
+                        <span className="h-3.5 w-3.5 animate-spin rounded-full border border-current border-t-transparent" />
+                        {t.contact.sending}
+                      </motion.span>
+                    ) : sent ? (
+                      <motion.span
+                        key="sent"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        className="flex items-center gap-2"
+                      >
+                        <FaCheckCircle size={14} />
+                        {t.contact.success}
+                      </motion.span>
+                    ) : (
+                      <motion.span
+                        key="idle"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="flex items-center gap-2"
+                      >
+                        {t.contact.submit}
+                        <FaPaperPlane size={12} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
               </div>
-              <button
-                type="submit"
-                disabled={sent}
-                className="group relative w-full px-8 py-3 bg-gradient-to-r from-navy-600 to-navy-700 text-white font-medium rounded-xl hover:shadow-lg hover:shadow-navy-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                <AnimatePresence mode="wait">
-                  {sent ? (
-                    <motion.span key="sent" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative z-10 flex items-center justify-center gap-2">
-                      <FaCheckCircle className="text-green-300" />
-                      {t.contact.sending}
-                    </motion.span>
-                  ) : (
-                    <motion.span key="send" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative z-10 flex items-center justify-center gap-2">
-                      {t.contact.submit}
-                      <FaPaperPlane className="text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </button>
             </form>
-          </motion.div>
-
-          <motion.div variants={slideInRight} initial="hidden" animate="visible" className="space-y-6">
-            <div className="backdrop-blur-sm rounded-2xl p-8 transition-all duration-500"
-              style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-            >
-              <h4 className="text-xl font-semibold mb-6" style={{ color: "var(--text-primary)" }}>{t.contact.infoTitle}</h4>
-              <div className="space-y-4">
-                {[
-                  { icon: FaPhoneAlt, bg: "bg-navy-500/10", text: "text-navy-400", value: profile.phone, label: t.contact.phone },
-                  { icon: FaEnvelope, bg: "bg-slate-400/10", text: "text-slate-300", value: profile.email, label: t.contact.email },
-                  { icon: FaMapMarkerAlt, bg: "bg-navy-500/10", text: "text-navy-400", value: profile.location, label: "Adresse" },
-                ].map(({ icon: Icon, bg, text, value }, i) => (
-                  <div key={i} className="flex items-center gap-3 group hover:translate-x-1 transition-transform" style={{ color: "var(--text-secondary)" }}>
-                    <div className={`p-2.5 rounded-lg ${bg} ${text} group-hover:scale-110 transition-all`}>
-                      <Icon />
-                    </div>
-                    <span>{value}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <a href={profile.linkedin} target="_blank" rel="noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl border transition-all hover:scale-105"
-                  style={{ backgroundColor: "var(--bg-secondary)", color: "var(--text-secondary)", borderColor: "var(--border-color)" }}
-                  onMouseEnter={(e) => { e.target.style.borderColor = "rgba(138,178,211,0.4)"; e.target.style.color = "#8ab2d3"; }}
-                  onMouseLeave={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.color = "var(--text-secondary)"; }}
-                >
-                  <FaLinkedin /> LinkedIn
-                </a>
-                <a href={profile.github} target="_blank" rel="noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl border transition-all hover:scale-105"
-                  style={{ backgroundColor: "var(--bg-secondary)", color: "var(--text-secondary)", borderColor: "var(--border-color)" }}
-                  onMouseEnter={(e) => { e.target.style.borderColor = "rgba(44,95,138,0.4)"; e.target.style.color = "#2c5f8a"; }}
-                  onMouseLeave={(e) => { e.target.style.borderColor = "var(--border-color)"; e.target.style.color = "var(--text-secondary)"; }}
-                >
-                  <FaGithub /> GitHub
-                </a>
-              </div>
-            </div>
-
-            <div className="backdrop-blur-sm rounded-2xl p-4 overflow-hidden transition-all duration-500"
-              style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-            >
-              <iframe
-                title="Casablanca Map"
-                src="https://www.google.com/maps/embed?pb=!11m18!1m12!1m3!1d106376.56000739818!2d-7.66939455!3d33.5722423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778aa113b%3A0xb06c1d84f310fd3!2sCasablanca!5e0!3m2!1sfr!2sma!4v1710000000000!5m2!1sfr!2sma"
-                width="100%"
-                height="220"
-                className="rounded-xl border-0"
-                allowFullScreen=""
-                loading="lazy"
-              />
-            </div>
           </motion.div>
         </div>
       </div>

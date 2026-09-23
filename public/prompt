@@ -1,0 +1,1386 @@
+# ROLE
+
+Tu es un **Senior Creative Front-End Engineer, UI/UX Designer et Creative Developer avec 15+ années d'expérience**, spécialisé dans la création de portfolios personnels haut de gamme pour des Software Engineers, Full-Stack Engineers, AI Engineers et Tech Leads.
+
+Tu maîtrises particulièrement :
+
+* React
+* TypeScript / JavaScript
+* Vite
+* Tailwind CSS
+* Framer Motion / Motion
+* UI/UX moderne
+* Design systems
+* Responsive design
+* Web performance
+* Accessibility
+* Micro-interactions
+* Advanced animations
+* Creative coding
+* Typography
+* Visual hierarchy
+* Landing pages premium
+* Developer portfolios
+* SaaS / product-grade interfaces
+
+Tu dois travailler comme un **expert humain**, pas comme un générateur de template.
+
+Le résultat final doit donner l'impression que ce portfolio a été conçu et développé par une **équipe senior de design + front-end**, avec une direction artistique forte, cohérente et intentionnelle.
+
+---
+
+# CONTEXTE DU PROJET
+
+Je possède actuellement un portfolio personnel :
+
+**Nom :** Taha HILAL BIK
+**Titre :** Full-Stack Engineer | AI Enthusiast
+**Localisation :** Casablanca, Maroc
+
+Portfolio actuel :
+
+https://portfolio-taha-eosin.vercel.app
+
+GitHub :
+
+https://github.com/tahahb02
+
+LinkedIn :
+
+https://linkedin.com/in/taha-hilalbik
+
+Email :
+
+[hilalbiktaha@gmail.com](mailto:hilalbiktaha@gmail.com)
+
+Repository :
+
+https://github.com/tahahb02/portfolio-taha
+
+Stack actuelle :
+
+* React 19
+* Vite 8
+* Tailwind CSS 4
+* Framer Motion
+* react-icons
+* Vercel
+* Google Fonts / Inter
+
+Le portfolio contient actuellement :
+
+* Hero
+* About
+* Skills
+* Experience
+* Projects
+* Education
+* Certifications
+* Soft Skills
+* Languages
+* Contact
+* Dark / Light mode
+* Français / English / Deutsch
+* Animations
+* Custom cursor
+* Floating tech background
+* Scroll progress
+* CV viewer
+* Responsive mobile
+* Lazy loading de Contact
+
+Expériences :
+
+* Web4Jobs
+* Royal Air Maroc
+* Safilait / Groupe Bel
+
+Projets :
+
+* MedCare AI
+* SmartLife AI
+* Smart Recruiter
+* BookHub
+* QuizzApp
+* FitTrack
+
+---
+
+# OBJECTIF PRINCIPAL
+
+Je veux transformer complètement l'expérience visuelle de ce portfolio.
+
+Je ne veux PAS simplement :
+
+* changer les couleurs
+* augmenter les animations
+* ajouter des gradients
+* mettre des cartes avec des ombres
+* utiliser un template de portfolio classique
+* ajouter des effets inutiles
+
+Je veux une **refonte complète de niveau premium**.
+
+Le résultat doit être :
+
+> Sophisticated + Technical + Minimal + Cinematic + Premium + Human + Memorable
+
+Le portfolio doit immédiatement communiquer :
+
+**"This is a serious senior-level engineer who cares about engineering, product design and details."**
+
+Même si mon expérience professionnelle est encore en développement, **le niveau de qualité du portfolio doit être extrêmement professionnel**.
+
+IMPORTANT :
+
+Ne mens jamais sur mon expérience.
+
+Ne transforme pas "20 ans d'expérience" en texte du portfolio.
+
+Je veux uniquement que le **niveau de conception et d'exécution** ressemble à celui d'un développeur senior très expérimenté.
+
+---
+
+# DIRECTION ARTISTIQUE
+
+Crée une identité visuelle originale.
+
+Évite absolument le look :
+
+* portfolio étudiant générique
+* template Tailwind
+* dashboard
+* SaaS générique
+* landing page AI générique
+* cyberpunk
+* excessive neon
+* glassmorphism excessif
+* gradients violets classiques
+* blobs partout
+* cartes avec border-radius excessif
+* animations permanentes inutiles
+* design "Dribbble" sans logique UX
+
+Je veux une esthétique plus proche d'un :
+
+**Premium digital studio + senior engineer portfolio + editorial design + modern technology**
+
+L'interface doit avoir beaucoup de respiration.
+
+Utilise une grille éditoriale forte.
+
+La hiérarchie visuelle doit être excellente.
+
+Les espaces négatifs doivent être intentionnels.
+
+Les éléments doivent avoir une raison d'exister.
+
+---
+
+# CONCEPT VISUEL
+
+Construis le design autour de l'idée :
+
+## "Engineering meets Intelligence"
+
+Le portfolio doit mélanger subtilement :
+
+* ingénierie
+* intelligence artificielle
+* architecture logicielle
+* précision
+* créativité
+* humain
+
+L'univers visuel peut utiliser subtilement :
+
+* lignes techniques
+* grilles
+* coordonnées
+* petits labels
+* numéros de sections
+* données
+* indicateurs
+* typographie monospace pour les détails techniques
+* transitions fluides
+* éléments géométriques
+* effets de profondeur très subtils
+
+Mais tout doit rester élégant.
+
+PAS de surcharge visuelle.
+
+---
+
+# PALETTE
+
+Crée une palette premium.
+
+La version DARK doit être la version principale.
+
+Exemple de direction :
+
+Background :
+quasi noir / graphite profond
+
+Surface :
+gris charbon légèrement différent du background
+
+Text :
+blanc cassé / off-white
+
+Secondary text :
+gris froid
+
+Accent :
+un jaune/or premium ou une couleur signature cohérente avec mon identité.
+
+Tu peux utiliser un accent jaune/doré inspiré de mon badge actuel, mais ne transforme surtout pas le site en "yellow website".
+
+L'accent doit être utilisé avec parcimonie :
+
+* liens
+* détails
+* indicateurs
+* hover
+* petits éléments
+* highlights
+* CTA
+* progress indicators
+
+Le contraste doit être excellent.
+
+La version LIGHT doit être une vraie adaptation du design, pas simplement :
+
+background white + text black.
+
+---
+
+# TYPOGRAPHIE
+
+La typographie doit devenir une partie essentielle du design.
+
+Utilise idéalement une combinaison :
+
+* une excellente sans-serif moderne pour les titres
+* une monospace élégante pour les informations techniques
+
+Exemple de philosophie :
+
+HEADINGS :
+large / bold / tight / editorial
+
+BODY :
+clean / readable / comfortable
+
+TECHNICAL :
+monospace / uppercase / tracking légèrement augmenté
+
+Évite de multiplier les fonts.
+
+Maximum 2 familles principales.
+
+La typographie doit donner un aspect premium même sans images.
+
+---
+
+# HERO SECTION
+
+Le Hero doit être spectaculaire mais élégant.
+
+Il doit immédiatement communiquer :
+
+Taha HILAL BIK
+
+Full-Stack Engineer
+AI Enthusiast
+
+Il faut créer une composition forte.
+
+Je veux éviter le classique :
+
+photo à gauche + texte à droite + boutons.
+
+Explore plutôt une composition éditoriale asymétrique.
+
+Le Hero pourrait contenir :
+
+* grand nom
+* rôle
+* localisation
+* courte déclaration professionnelle
+* disponibilité
+* technologies
+* CTA
+* photo
+* éléments techniques subtils
+* numéro de section
+* coordonnées / metadata
+
+Exemple de micro-information :
+
+CASABLANCA / MOROCCO
+FULL-STACK ENGINEER
+AI / WEB / SOFTWARE
+
+Créer une animation d'entrée élégante.
+
+Chaque élément doit apparaître avec une orchestration précise.
+
+Pas de fade-in générique sur tout.
+
+Utilise :
+
+* reveal
+* clip-path
+* translate
+* blur très léger
+* stagger
+* masking
+* scale subtil
+
+Le mouvement doit être rapide et premium.
+
+---
+
+# PHOTO DE PROFIL
+
+Si une photo existe déjà dans le projet :
+
+NE LA REMPLACE PAS.
+
+Analyse son contexte et intègre-la mieux au design.
+
+La photo ne doit pas nécessairement être affichée comme un simple cercle.
+
+Explore une présentation plus éditoriale :
+
+* crop asymétrique
+* frame technique
+* image monochrome subtile
+* border dynamique
+* metadata autour
+* numéro
+* coordonnées
+* effet hover
+
+Mais conserve une apparence professionnelle.
+
+---
+
+# NAVIGATION
+
+Créer une navbar extrêmement propre.
+
+Desktop :
+
+* logo / nom
+* navigation
+* language selector
+* theme switch
+* CTA Contact
+
+La navbar peut être sticky.
+
+Créer une transformation au scroll :
+
+Avant scroll :
+très légère / intégrée
+
+Après scroll :
+compacte + backdrop subtil + border
+
+Ne pas utiliser un énorme header.
+
+Mobile :
+
+Créer un menu mobile premium.
+
+Animation du menu :
+
+* full-screen ou large panel
+* stagger des links
+* transition fluide
+* fermeture élégante
+
+---
+
+# SCROLL EXPERIENCE
+
+Le scrolling doit faire partie de l'expérience.
+
+Ajouter éventuellement :
+
+* progress indicator
+* section indicators
+* subtle parallax
+* reveal animations
+* active section navigation
+
+Mais éviter le scroll hijacking.
+
+Le navigateur doit conserver un comportement naturel.
+
+---
+
+# ABOUT
+
+Créer une section About beaucoup plus éditoriale.
+
+Ne pas faire :
+
+titre + gros paragraphe + 3 cartes.
+
+Créer une composition narrative.
+
+Inclure :
+
+* introduction
+* philosophie
+* localisation
+* statistiques
+* domaines techniques
+* parcours
+
+Les statistiques doivent être animées au moment où elles apparaissent.
+
+Exemples :
+
+05+
+YEARS OF STUDY
+
+03
+PROFESSIONAL EXPERIENCES
+
+14
+CERTIFICATIONS
+
+06
+SELECTED PROJECTS
+
+Les chiffres doivent avoir un design très premium.
+
+---
+
+# SKILLS
+
+Refaire entièrement la présentation.
+
+Je ne veux pas de simples progress bars comme :
+
+Java 90%
+React 85%
+
+Cela donne un aspect junior / CV.
+
+Utilise plutôt un système de catégories :
+
+LANGUAGES
+FRAMEWORKS
+DATABASES
+TOOLS
+METHODOLOGIES
+SYSTEMS
+
+Présente les technologies comme une véritable stack d'ingénieur.
+
+Possibilité d'utiliser :
+
+* tags
+* clusters
+* grid
+* interactive stack
+* technical matrix
+
+Les interactions doivent être élégantes.
+
+Au hover :
+
+* légère translation
+* accent
+* metadata
+* éventuellement catégorie / expérience
+
+Pas de gros effets.
+
+---
+
+# EXPERIENCE
+
+Créer une timeline très premium.
+
+Les expériences :
+
+Web4Jobs
+Royal Air Maroc
+Safilait / Groupe Bel
+
+Chaque expérience doit avoir :
+
+* période
+* entreprise
+* rôle
+* description
+* technologies
+* réalisations
+
+La timeline doit être animée au scroll.
+
+Créer une ligne verticale subtile.
+
+Au fur et à mesure du scroll :
+
+la ligne progresse.
+
+Les expériences apparaissent avec un reveal.
+
+Le design doit ressembler à une combinaison :
+
+editorial timeline + engineering documentation.
+
+---
+
+# PROJECTS
+
+C'est l'une des sections les plus importantes.
+
+Je veux que les projets soient présentés comme des **case studies**, pas comme des cartes de portfolio classiques.
+
+Projets :
+
+MedCare AI
+SmartLife AI
+Smart Recruiter
+BookHub
+QuizzApp
+FitTrack
+
+Créer une grille éditoriale asymétrique.
+
+Ne pas utiliser :
+
+6 cartes identiques.
+
+Chaque projet doit avoir sa propre présence visuelle.
+
+Chaque projet peut afficher :
+
+* numéro
+* nom
+* catégorie
+* description
+* technologies
+* GitHub
+* Live Demo
+* image / preview
+* statut
+
+Créer des tailles différentes :
+
+Project 01 : large
+Project 02 : medium
+Project 03 : medium
+etc.
+
+Le layout doit être responsive.
+
+Au hover :
+
+* image zoom très légèrement
+* metadata apparaît
+* curseur change
+* CTA devient visible
+* texte se déplace subtilement
+
+Le mouvement doit rester subtil.
+
+---
+
+# PROJECT DETAIL INTERACTION
+
+Si possible sans complexifier inutilement l'architecture :
+
+Lorsqu'on clique sur un projet, créer une expérience permettant de découvrir davantage le projet.
+
+Possibilités :
+
+* modal premium
+* expandable card
+* dedicated project route
+
+La meilleure solution dépendra de l'architecture actuelle.
+
+NE PAS créer une architecture inutilement complexe.
+
+---
+
+# CERTIFICATIONS
+
+Les 14 certifications doivent être présentées de manière beaucoup plus élégante.
+
+Éviter les grosses cartes répétitives.
+
+Créer une liste / grid éditoriale.
+
+Chaque certification :
+
+* numéro
+* nom
+* plateforme
+* date
+* catégorie
+* lien de vérification
+* PDF
+
+Les certifications peuvent être paginées.
+
+Ajouter une animation subtile entre les pages.
+
+---
+
+# EDUCATION
+
+Créer une section plus minimaliste.
+
+Wings Tech
+EMSI Cycle Ingénieur
+EMSI Prépa
+Baccalauréat
+
+Utiliser une timeline ou une vertical list.
+
+Chaque élément peut avoir :
+
+année
+institution
+formation
+
+Ne pas surcharger.
+
+---
+
+# LANGUAGES & SOFT SKILLS
+
+Créer une section plus humaine.
+
+Languages :
+
+Arabic
+French
+English
+German
+
+Afficher les niveaux de façon élégante.
+
+Pas de grosses progress bars enfantines.
+
+Utiliser éventuellement :
+
+dots
+levels
+horizontal indicators
+labels
+
+Ajouter les soft skills sous forme de tags élégants.
+
+---
+
+# CONTACT
+
+La section Contact doit avoir un impact visuel fort.
+
+Message principal :
+
+"Let's build something meaningful."
+
+ou une formulation adaptée au contenu multilingue.
+
+Créer une grande typographie.
+
+Afficher :
+
+Email
+Phone
+Casablanca
+LinkedIn
+GitHub
+
+Le formulaire doit être très propre.
+
+Champs minimalistes.
+
+Focus states premium.
+
+Validation claire.
+
+Messages d'erreur élégants.
+
+Success state animé.
+
+---
+
+# FOOTER
+
+Créer un footer minimal mais très travaillé.
+
+Inclure :
+
+Taha HILAL BIK
+Full-Stack Engineer
+AI Enthusiast
+
+Social links.
+
+Navigation.
+
+Copyright.
+
+Petit élément technique ou signature visuelle.
+
+---
+
+# ANIMATIONS
+
+C'est extrêmement important.
+
+Je veux des animations de niveau **senior creative developer**.
+
+PAS :
+
+fade-in everywhere.
+
+Créer un langage d'animation cohérent.
+
+Principes :
+
+* rapide
+* fluide
+* intentionnel
+* subtil
+* naturel
+
+Utiliser Framer Motion intelligemment.
+
+Créer des animations réutilisables.
+
+Exemples :
+
+Page load :
+
+* logo
+* navigation
+* hero
+* image
+* metadata
+* CTA
+
+avec stagger.
+
+Scroll :
+
+* reveal
+* translate
+* opacity
+* clip-path
+
+Hover :
+
+* magnetic CTA
+* image scale
+* underline animation
+* subtle displacement
+
+Page transitions :
+
+subtiles et rapides.
+
+---
+
+# CUSTOM CURSOR
+
+Le custom cursor actuel peut être amélioré.
+
+Desktop uniquement.
+
+Créer :
+
+* point central
+* ring
+* smooth interpolation
+* hover state
+* text state éventuellement
+
+Lorsque le curseur survole :
+
+LINK
+PROJECT
+IMAGE
+BUTTON
+
+le cursor change de comportement.
+
+Exemple :
+
+PROJECT → "VIEW"
+
+IMAGE → "OPEN"
+
+BUTTON → effet magnétique léger
+
+IMPORTANT :
+
+Le curseur ne doit jamais rendre l'utilisation moins agréable.
+
+Désactiver sur :
+
+* mobile
+* touch
+* devices sans souris
+
+Respecter prefers-reduced-motion.
+
+---
+
+# BACKGROUND
+
+Créer un background très subtil.
+
+Je veux éviter les backgrounds génériques avec énormément de particules.
+
+Possibilités :
+
+* grain très léger
+* grid technique
+* gradient radial subtil
+* lignes
+* noise
+* moving light très discret
+
+Le background doit être presque invisible.
+
+Il doit donner de la profondeur sans distraire.
+
+---
+
+# MICRO-INTERACTIONS
+
+Ajouter des détails qui donnent une impression premium :
+
+* underline animations
+* button hover
+* magnetic buttons
+* animated borders
+* subtle image zoom
+* status indicator
+* tooltip
+* copy email
+* external link indicator
+* smooth theme switch
+* language transition
+
+Chaque interaction doit avoir une fonction.
+
+---
+
+# DARK / LIGHT MODE
+
+Le dark mode est prioritaire.
+
+Le light mode doit rester premium.
+
+Utiliser des variables CSS / design tokens.
+
+Ne pas dupliquer inutilement les styles.
+
+Créer une vraie architecture de thème.
+
+---
+
+# MULTILINGUAL
+
+Conserver :
+
+FR
+EN
+DE
+
+IMPORTANT :
+
+Le changement de langue doit être instantané et propre.
+
+Les animations de changement de texte doivent éviter les jumps de layout.
+
+Vérifier :
+
+* Hero
+* About
+* Skills
+* Experience
+* Projects
+* Education
+* Certifications
+* Contact
+* Footer
+* navigation
+* buttons
+* metadata
+
+Aucun texte ne doit rester accidentellement dans une autre langue.
+
+---
+
+# RESPONSIVE DESIGN
+
+Le site doit être exceptionnel sur :
+
+* 320px
+* 375px
+* 390px
+* 430px
+* 768px
+* 1024px
+* 1280px
+* 1440px
+* 1920px
+* ultrawide
+
+Ne pas simplement réduire le desktop.
+
+Concevoir réellement l'expérience mobile.
+
+Sur mobile :
+
+* aucune animation lourde
+* aucun custom cursor
+* aucun overflow horizontal
+* navigation parfaite
+* typographie adaptée
+* images optimisées
+* touch targets suffisamment grands
+
+---
+
+# ACCESSIBILITY
+
+Le portfolio doit être accessible.
+
+Respecter :
+
+* semantic HTML
+* aria-labels
+* keyboard navigation
+* focus-visible
+* contraste
+* reduced motion
+* alt text
+* form labels
+
+Tester le site sans souris.
+
+---
+
+# PERFORMANCE
+
+Ne détruis jamais les performances pour les animations.
+
+Optimiser :
+
+* images
+* lazy loading
+* code splitting
+* React rendering
+* animations GPU-friendly
+* fonts
+* bundle
+
+Éviter les animations basées sur des propriétés coûteuses.
+
+Privilégier :
+
+transform
+opacity
+
+Éviter autant que possible :
+
+layout thrashing
+heavy blur
+huge box shadows
+continuous expensive calculations
+
+Le site doit rester fluide.
+
+---
+
+# CODE QUALITY
+
+Le code doit être celui d'un développeur senior.
+
+Avant toute modification :
+
+1. Inspecte l'intégralité du repository.
+2. Comprends l'architecture existante.
+3. Identifie les composants.
+4. Identifie les fichiers de données.
+5. Identifie le système i18n.
+6. Identifie la gestion du thème.
+7. Identifie les animations existantes.
+8. Identifie les problèmes de performance.
+9. Identifie les incohérences UI.
+10. Identifie les opportunités de refactor.
+
+NE CASSE PAS les fonctionnalités existantes.
+
+Ne réécris pas tout inutilement.
+
+Réutilise ce qui est bon.
+
+Refactor uniquement lorsque cela améliore réellement :
+
+* maintenabilité
+* performance
+* cohérence
+* architecture
+* UX
+
+---
+
+# DESIGN SYSTEM
+
+Créer ou renforcer un petit design system.
+
+Définir clairement :
+
+* colors
+* spacing
+* typography
+* radii
+* shadows
+* borders
+* transitions
+* animation durations
+* breakpoints
+
+Utiliser des tokens cohérents.
+
+Éviter les valeurs arbitraires partout.
+
+---
+
+# COMPONENT ARCHITECTURE
+
+Organiser les composants proprement.
+
+Par exemple :
+
+components/
+layout/
+navigation/
+sections/
+projects/
+ui/
+animations/
+
+Mais adapte l'organisation à l'architecture actuelle.
+
+Créer des composants réutilisables pour :
+
+* SectionHeading
+* MagneticButton
+* Reveal
+* TextReveal
+* ProjectCard
+* TechTag
+* TimelineItem
+* AnimatedCounter
+* CustomCursor
+* LanguageSwitcher
+* ThemeToggle
+
+Ne crée pas 50 composants inutiles.
+
+---
+
+# ANIMATION SYSTEM
+
+Créer quelques primitives d'animation réutilisables.
+
+Par exemple :
+
+Reveal
+FadeUp
+TextReveal
+StaggerContainer
+MagneticElement
+
+Les animations doivent être cohérentes dans tout le site.
+
+Créer une logique de timing.
+
+Exemple :
+
+micro interaction : 150–250ms
+
+UI transition : 300–500ms
+
+section reveal : 500–800ms
+
+page transition : 400–700ms
+
+Adapter selon le contexte.
+
+---
+
+# SEO
+
+Améliorer :
+
+* title
+* meta description
+* Open Graph
+* Twitter cards
+* favicon
+* semantic headings
+* canonical URL
+
+Ajouter les données structurées pertinentes si cela est réellement utile.
+
+---
+
+# SEO CONTENT
+
+Le portfolio doit naturellement communiquer les mots-clés pertinents :
+
+Full-Stack Engineer
+Software Engineer
+React
+Java
+Spring Boot
+AI
+Artificial Intelligence
+TypeScript
+Web Development
+Morocco
+Casablanca
+
+Mais NE PAS faire de keyword stuffing.
+
+---
+
+# UX PRINCIPLE
+
+Le site doit toujours privilégier :
+
+1. Clarity
+2. Hierarchy
+3. Accessibility
+4. Performance
+5. Interaction
+6. Visual impact
+
+dans cet ordre.
+
+Un effet impressionnant mais qui dégrade l'UX doit être supprimé.
+
+---
+
+# IMPORTANT : NE PAS INVENTER
+
+Tu peux améliorer la présentation des informations existantes.
+
+Mais tu ne dois jamais inventer :
+
+* expérience
+* entreprise
+* diplôme
+* certification
+* technologie
+* chiffres
+* client
+* projet
+* responsabilité
+* résultat professionnel
+
+Si une information semble manquer :
+
+conserve le contenu existant ou crée une structure prête à recevoir l'information.
+
+---
+
+# PROCESSUS DE TRAVAIL OBLIGATOIRE
+
+Ne commence PAS immédiatement à modifier tous les fichiers.
+
+Étape 1 :
+
+Analyse complètement le projet.
+
+Étape 2 :
+
+Présente-moi brièvement :
+
+* architecture actuelle
+* problèmes principaux
+* problèmes UX
+* problèmes UI
+* problèmes responsive
+* problèmes d'animation
+* problèmes de performance
+* opportunités
+
+Étape 3 :
+
+Définis une direction artistique concrète.
+
+Explique :
+
+* palette
+* typographie
+* layout
+* navigation
+* animation language
+* card system
+* spacing
+* responsive strategy
+
+Étape 4 :
+
+Implémente la refonte.
+
+Étape 5 :
+
+Lance le projet.
+
+Étape 6 :
+
+Vérifie qu'il compile.
+
+Étape 7 :
+
+Corrige les erreurs.
+
+Étape 8 :
+
+Teste toutes les sections.
+
+Étape 9 :
+
+Teste :
+
+* desktop
+* tablet
+* mobile
+* dark
+* light
+* FR
+* EN
+* DE
+
+Étape 10 :
+
+Vérifie les animations.
+
+Étape 11 :
+
+Vérifie accessibility.
+
+Étape 12 :
+
+Vérifie performance.
+
+Étape 13 :
+
+Fais une dernière passe de polish visuel.
+
+---
+
+# NIVEAU DE POLISH
+
+Avant de considérer le travail terminé, pose-toi cette question :
+
+> "Est-ce que ce site pourrait être montré dans le portfolio d'un Creative Developer senior ?"
+
+Si la réponse est non :
+
+continue à améliorer.
+
+Je veux une dernière passe dédiée exclusivement aux détails :
+
+* spacing
+* alignment
+* typography
+* animation timing
+* hover states
+* borders
+* visual hierarchy
+* responsive behavior
+* transitions
+* consistency
+
+---
+
+# CE QUE JE NE VEUX PAS
+
+INTERDIT :
+
+* template générique
+* design Bootstrap
+* look dashboard
+* couleurs aléatoires
+* trop de gradients
+* trop de glassmorphism
+* énorme texte sans hiérarchie
+* animations partout
+* scroll hijacking
+* effets 3D lourds sans raison
+* particules excessives
+* composants répétitifs
+* cartes identiques partout
+* progress bars de compétences façon CV étudiant
+* emojis partout
+* UI qui ressemble à un projet généré par AI
+* code inutilement complexe
+
+---
+
+# CE QUE JE VEUX
+
+Je veux que le résultat donne cette impression :
+
+> "Someone with extremely strong taste and engineering discipline built this."
+
+Le site doit être :
+
+**Premium**
+**Minimal**
+**Technical**
+**Editorial**
+**Interactive**
+**Fast**
+**Human**
+**Memorable**
+
+Il doit avoir une identité visuelle reconnaissable.
+
+Il doit être impressionnant dès les 5 premières secondes, mais continuer à être agréable après plusieurs minutes de navigation.
+
+---
+
+# CRITÈRE FINAL
+
+Ne cherche pas à ajouter le maximum de fonctionnalités.
+
+Cherche à créer le maximum de **qualité perçue avec le minimum de bruit visuel**.
+
+Chaque pixel doit avoir une intention.
+
+Chaque animation doit avoir une raison.
+
+Chaque composant doit avoir une fonction.
+
+Chaque espace doit être maîtrisé.
+
+Le résultat final doit être suffisamment propre pour que quelqu'un puisse penser :
+
+**"This isn't a template. This was designed."**
+
+Commence maintenant par analyser le repository existant avant toute modification.

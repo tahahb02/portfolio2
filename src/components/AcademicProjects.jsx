@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
-import { FaCode, FaArrowRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { fadeInUp, staggerContainer } from "../constants/animations";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt, FaTimes, FaArrowRight } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
+import SectionHeading from "./ui/SectionHeading";
+import { fadeUp, staggerContainer, EASE } from "../constants/animations";
 
 const projectTechs = {
   EasyJob: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Socket.io", "Puppeteer", "OpenAI"],
@@ -13,165 +15,268 @@ const projectTechs = {
   "FitTrack Web App": ["React JS", "JavaScript"],
 };
 
+function TechChips({ title }) {
+  const techs = projectTechs[title] || [];
+  if (!techs.length) return null;
+  return (
+    <div className="flex flex-wrap gap-2">
+      {techs.map((tech) => (
+        <span
+          key={tech}
+          className="border border-(--border-color) px-2.5 py-1 font-mono text-[10px] tracking-wider text-(--text-secondary) transition-colors duration-200 hover:border-(--accent) hover:text-(--accent)"
+        >
+          {tech}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ProjectModal({ project, onClose }) {
+  const { t } = useLanguage();
+
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      className="fixed inset-0 z-[90] flex items-center justify-center p-4 md:p-8"
+      style={{ backgroundColor: "rgba(8,10,13,0.82)" }}
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={project.title}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 28, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 28, scale: 0.97 }}
+        transition={{ duration: 0.35, ease: EASE }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto border border-(--border-color) bg-(--bg-elevated)"
+      >
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-(--hairline) bg-(--bg-elevated)/95 px-5 py-3 backdrop-blur">
+          <span className="mono-label">CASE STUDY — {project.category}</span>
+          <button
+            onClick={onClose}
+            data-cursor="LINK"
+            aria-label={t.hero.close}
+            className="grid h-9 w-9 place-items-center border border-(--border-color) text-(--text-secondary) transition-colors duration-200 hover:border-(--accent) hover:text-(--accent)"
+          >
+            <FaTimes size={14} />
+          </button>
+        </div>
+
+        <div className="bg-(--bg-secondary)">
+          <img
+            src={project.img}
+            alt={`${project.title} — ${project.category}`}
+            className="h-auto w-full"
+            loading="lazy"
+          />
+        </div>
+
+        <div className="p-6 md:p-8">
+          <span className="mono-label">{project.category}</span>
+          <h3 className="mt-2 text-3xl font-bold tracking-tight text-(--text-primary)">
+            {project.title}
+          </h3>
+          <p className="mt-4 text-sm leading-relaxed text-(--text-secondary) md:text-base">
+            {project.desc}
+          </p>
+          <div className="mt-6">
+            <TechChips title={project.title} />
+          </div>
+          <div className="mt-7 flex flex-wrap gap-3">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="LINK"
+                className="inline-flex items-center gap-2 border border-(--border-color) px-4 py-2.5 text-xs font-semibold text-(--text-primary) transition-colors duration-200 hover:border-(--accent) hover:text-(--accent)"
+              >
+                <FaGithub size={14} />
+                {t.projects.code}
+              </a>
+            )}
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="LINK"
+                className="inline-flex items-center gap-2 bg-(--accent) px-4 py-2.5 text-xs font-semibold text-(--on-accent) transition-colors duration-200 hover:bg-(--accent-soft)"
+              >
+                <FaExternalLinkAlt size={12} />
+                {t.projects.live}
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function AcademicProjects() {
   const { t, content } = useLanguage();
   const projects = content.projects;
+  const [selected, setSelected] = useState(null);
+
   const featured = projects.filter((p) => p.featured);
   const others = projects.filter((p) => !p.featured);
 
+  const open = (p) => setSelected(p);
+
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <h3 className="text-2xl md:text-3xl font-bold mb-12 flex items-center gap-3">
-          <FaCode className="text-navy-400" />
-          <span className="bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent">
-            {t.projects.title}
-          </span>
-        </h3>
+    <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl">
+        <SectionHeading index={5} label={t.projects.label} title={t.projects.title} />
 
-        {featured.length > 0 && (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
-          >
-            {featured.map((proj, idx) => {
-              const techs = projectTechs[proj.title] || [];
-              return (
-                <motion.div
-                  key={idx}
-                  variants={fadeInUp}
-                  className="group relative backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-300 cursor-default"
-                  style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(138,178,211,0.4)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(138,178,211,0.1)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-navy-500 via-slate-300 to-navy-500" />
-                  <div className="p-6 relative">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-slate-400/5 to-transparent rounded-bl-full pointer-events-none" />
-                    <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-navy-500/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-14 flex flex-col gap-14"
+        >
+          {featured.map((project, i) => (
+            <motion.article
+              key={project.title}
+              variants={fadeUp}
+              className="group grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10"
+              data-cursor="VIEW"
+              onClick={() => open(project)}
+            >
+              <div
+                className={`overflow-hidden border border-(--border-color) bg-(--bg-secondary) ${i % 2 === 1 ? "lg:order-2" : ""}`}
+              >
+                <div className="aspect-[16/11] overflow-hidden">
+                  <img
+                    src={project.img}
+                    alt={`${project.title} — ${project.category}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    data-blend="true"
+                  />
+                </div>
+                <div className="flex items-center justify-between border-t border-(--border-color) px-4 py-2.5">
+                  <span className="mono-label">{project.category}</span>
+                  <span className="font-mono text-[10px] tracking-[0.2em] text-(--text-muted) group-hover:text-(--accent) transition-colors duration-300">
+                    {String(projects.indexOf(project) + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
 
-                    <div className="flex items-start justify-between mb-3 relative">
-                      <div className="flex items-center gap-2">
-                        <h4 className="text-lg font-semibold group-hover:text-navy-300 transition-colors" style={{ color: "var(--text-primary)" }}>
-                          {proj.title}
-                        </h4>
-                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-navy-500/20 to-slate-400/20 text-navy-400 border border-navy-500/20">
-                          Featured
-                        </span>
-                      </div>
-                    </div>
+              <div className={`flex flex-col justify-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                <span className="font-mono text-[10px] tracking-[0.25em] text-(--accent)" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")} / FEATURED
+                </span>
+                <h3 className="mt-3 text-3xl font-bold tracking-tight text-(--text-primary) transition-colors duration-300 group-hover:text-(--accent) md:text-4xl">
+                  {project.title}
+                </h3>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-(--text-secondary) md:text-base">
+                  {project.desc}
+                </p>
+                <div className="mt-5">
+                  <TechChips title={project.title} />
+                </div>
+                <div className="mt-6 flex flex-wrap items-center gap-5">
+                  <span className="flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-(--accent)">
+                    {t.projects.view} <FaArrowRight size={11} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      data-cursor="LINK"
+                      className="flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-(--text-secondary) transition-colors duration-200 hover:text-(--accent)"
+                    >
+                      <FaGithub size={13} />
+                      {t.projects.code}
+                    </a>
+                  )}
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      data-cursor="LINK"
+                      className="flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-(--text-secondary) transition-colors duration-200 hover:text-(--accent)"
+                    >
+                      <FaExternalLinkAlt size={11} />
+                      {t.projects.live}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
 
-                    <p className="text-sm leading-relaxed relative group-hover:text-slate-300 transition-colors mb-4" style={{ color: "var(--text-secondary)" }}>
-                      {proj.desc}
-                    </p>
-
-                    {techs.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 relative mb-4">
-                        {techs.map((tech, tIdx) => (
-                          <span
-                            key={tIdx}
-                            className="px-2 py-0.5 text-xs rounded-md transition-colors"
-                            style={{ color: "var(--text-muted)", backgroundColor: "var(--bg-secondary)", border: "1px solid var(--border-color)" }}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="flex items-center gap-3 relative">
-                      {proj.github && (
-                        <a
-                          href={proj.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-lg border transition-all duration-300 hover:scale-105"
-                          style={{ borderColor: "var(--border-color)", color: "var(--text-secondary)", backgroundColor: "var(--bg-secondary)" }}
-                          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(44,95,138,0.5)"; e.currentTarget.style.color = "#2c5f8a"; }}
-                          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.color = "var(--text-secondary)"; }}
-                        >
-                          <FaGithub size={14} />
-                          Code
-                        </a>
-                      )}
-                      {proj.live && (
-                        <a
-                          href={proj.live}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-lg border transition-all duration-300 hover:scale-105"
-                          style={{ borderColor: "rgba(138,178,211,0.3)", color: "#8ab2d3", backgroundColor: "rgba(138,178,211,0.08)" }}
-                          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(138,178,211,0.6)"; e.currentTarget.style.boxShadow = "0 4px 12px rgba(138,178,211,0.15)"; }}
-                          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(138,178,211,0.3)"; e.currentTarget.style.boxShadow = "none"; }}
-                        >
-                          <FaExternalLinkAlt size={12} />
-                          Live Demo
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        )}
-
-        {others.length > 0 && (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
-            {others.map((proj, idx) => {
-              const techs = projectTechs[proj.title] || [];
-              return (
-                <motion.div
-                  key={idx}
-                  variants={fadeInUp}
-                  className="group relative backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-300 cursor-default"
-                  style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(138,178,211,0.4)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(138,178,211,0.1)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <div className="p-6 relative">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-slate-400/5 to-transparent rounded-bl-full pointer-events-none" />
-                    <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-navy-500/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                    <div className="flex items-start justify-between mb-3 relative">
-                      <h4 className="text-lg font-semibold group-hover:text-navy-300 transition-colors" style={{ color: "var(--text-primary)" }}>
-                        {proj.title}
-                      </h4>
-                      <FaArrowRight className="text-slate-600 group-hover:text-slate-300 group-hover:translate-x-1 transition-all duration-300 mt-1 shrink-0" />
-                    </div>
-                    <p className="text-sm leading-relaxed relative group-hover:text-slate-300 transition-colors mb-3" style={{ color: "var(--text-secondary)" }}>
-                      {proj.desc}
-                    </p>
-                    {techs.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 relative">
-                        {techs.map((tech, tIdx) => (
-                          <span
-                            key={tIdx}
-                            className="px-2 py-0.5 text-xs rounded-md transition-colors"
-                            style={{ color: "var(--text-muted)", backgroundColor: "var(--bg-secondary)", border: "1px solid var(--border-color)" }}
-                            onMouseEnter={(e) => { e.currentTarget.style.color = "#8ab2d3"; e.currentTarget.style.borderColor = "rgba(138,178,211,0.3)"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-muted)"; e.currentTarget.style.borderColor = "var(--border-color)"; }}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        )}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-14 grid grid-cols-1 gap-px border border-(--border-color) bg-(--hairline) sm:grid-cols-2"
+        >
+          {others.map((project) => (
+            <motion.article
+              key={project.title}
+              variants={fadeUp}
+              className="group bg-(--bg-card) transition-colors duration-300 hover:bg-(--bg-card-hover)"
+              data-cursor="VIEW"
+              onClick={() => open(project)}
+            >
+              <div className="aspect-[16/10] overflow-hidden">
+                <img
+                  src={project.img}
+                  alt={`${project.title} — ${project.category}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between">
+                  <span className="mono-label">{project.category}</span>
+                  <span className="font-mono text-[10px] text-(--text-muted) transition-colors duration-300 group-hover:text-(--accent)">
+                    {String(projects.indexOf(project) + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="mt-3 text-xl font-bold tracking-tight text-(--text-primary) transition-colors duration-300 group-hover:text-(--accent)">
+                  {project.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
+                  {project.desc}
+                </p>
+                <div className="mt-4">
+                  <TechChips title={project.title} />
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
       </div>
+
+      <AnimatePresence>
+        {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
+      </AnimatePresence>
     </section>
   );
 }

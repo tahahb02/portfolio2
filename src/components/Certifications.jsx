@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaAward, FaCertificate, FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaLink } from "react-icons/fa";
-import { fadeInUp, staggerContainer } from "../constants/animations";
+import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaLink } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
+import SectionHeading from "./ui/SectionHeading";
+import { EASE } from "../constants/animations";
 
 const PER_PAGE = 6;
 
@@ -10,122 +11,112 @@ export default function Certifications() {
   const { t, content } = useLanguage();
   const certifications = content.certifications;
   const [page, setPage] = useState(0);
-  const totalPages = Math.ceil(certifications.length / PER_PAGE);
+
+  const totalPages = Math.max(1, Math.ceil(certifications.length / PER_PAGE));
   const current = certifications.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
 
-  const goNext = () => setPage((p) => Math.min(p + 1, totalPages - 1));
-  const goPrev = () => setPage((p) => Math.max(p - 1, 0));
+  const next = () => setPage((p) => Math.min(p + 1, totalPages - 1));
+  const prev = () => setPage((p) => Math.max(p - 1, 0));
 
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <h3 className="text-2xl md:text-3xl font-bold mb-12 flex items-center gap-3">
-          <FaAward className="text-navy-400" />
-          <span className="bg-gradient-to-r from-navy-400 to-slate-300 bg-clip-text text-transparent">
-            {t.certifications.title}
-          </span>
-        </h3>
+    <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl">
+        <section>
+          <SectionHeading index={7} label={t.certifications.label} title={t.certifications.title} />
+        </section>
 
-        <div className="relative">
+        <div className="mt-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={page}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={staggerContainer}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: EASE }}
+              className="grid grid-cols-1 gap-px border border-(--border-color) bg-(--hairline) lg:grid-cols-2"
             >
-              {current.map((cert, idx) => (
-                <motion.div
-                  key={page * PER_PAGE + idx}
-                  variants={fadeInUp}
-                  className="group backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 cursor-default relative"
-                  style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(44,95,138,0.3)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(44,95,138,0.1)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-color)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
-                >
-                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-navy-500/5 rounded-full blur-xl group-hover:bg-navy-500/10 transition-all duration-500" />
-                  <div className="relative p-4">
-                    <div className="flex items-start gap-3">
-                      <div className="relative shrink-0">
-                        <motion.div
-                          className="p-2 rounded-lg bg-navy-500/10 text-navy-500/60 group-hover:text-navy-400 group-hover:bg-navy-500/20 transition-all duration-300"
-                          whileHover={{ rotate: -10, scale: 1.1 }}
+              {current.map((cert, idx) => {
+                const num = page * PER_PAGE + idx + 1;
+                const platform = cert.courseraUrl ? "COURSERA" : "CERTIFICATE";
+                return (
+                  <div key={num} className="group flex bg-(--bg-card) p-5 transition-colors duration-300 hover:bg-(--bg-card-hover)">
+                    <div className="w-14 shrink-0 pt-0.5">
+                      <span className="font-mono text-2xl font-bold text-(--hairline) transition-colors duration-300 group-hover:text-(--accent)/60 sm:text-3xl">
+                        {String(num).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <span className="mono-label">
+                        {t.certifications.platform} · {platform}
+                      </span>
+                      <h3 className="mt-1.5 text-sm font-medium leading-snug text-(--text-primary)">
+                        {cert.name.replace(/\s*\(Coursera\)\s*/i, "")}
+                      </h3>
+
+                      <div className="mt-4 flex items-center gap-4">
+                        <a
+                          href={cert.pdf}
+                          target="_blank"
+                          rel="noreferrer"
+                          data-cursor="LINK"
+                          className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.16em] text-(--text-secondary) transition-colors duration-200 hover:text-(--accent)"
                         >
-                          <FaCertificate />
-                        </motion.div>
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <span className="text-xs font-mono text-navy-500/60 group-hover:text-navy-400 transition-colors">
-                          CERT-{String(page * PER_PAGE + idx + 1).padStart(2, "0")}
-                        </span>
-                        <p className="text-sm leading-relaxed group-hover:text-slate-200 transition-colors mt-0.5" style={{ color: "var(--text-secondary)" }}>{cert.name}</p>
-                        <div className="flex items-center gap-3 mt-2 flex-wrap">
+                          <FaExternalLinkAlt size={10} />
+                          {t.certifications.pdf.toUpperCase()}
+                        </a>
+                        {cert.courseraUrl && (
                           <a
-                            href={cert.pdf}
+                            href={cert.courseraUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 text-xs font-medium text-navy-400/70 hover:text-navy-300 transition-colors"
+                            data-cursor="LINK"
+                            className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.16em] text-(--text-secondary) transition-colors duration-200 hover:text-(--accent)"
                           >
-                            <FaExternalLinkAlt className="text-[10px]" />
-                            Voir le certificat
+                            <FaLink size={10} />
+                            {t.certifications.verify.toUpperCase()}
                           </a>
-                          {cert.courseraUrl && (
-                            <a
-                              href={cert.courseraUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-400/70 hover:text-blue-300 transition-colors"
-                            >
-                              <FaLink className="text-[10px]" />
-                              Vérifier sur Coursera
-                            </a>
-                          )}
-                        </div>
+                        )}
                       </div>
                     </div>
+                    <div className="hidden w-20 shrink-0 sm:block">
+                      <img
+                        src={cert.img}
+                        alt=""
+                        loading="lazy"
+                        className="h-16 w-16 object-contain opacity-70 mix-blend-luminosity transition-all duration-300 group-hover:opacity-100 group-hover:mix-blend-normal"
+                      />
+                    </div>
                   </div>
-                  <div className="relative h-36 overflow-hidden bg-gradient-to-b from-transparent to-black/10">
-                    <img
-                      src={cert.img}
-                      alt={cert.name}
-                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                </motion.div>
-              ))}
+                );
+              })}
             </motion.div>
           </AnimatePresence>
 
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={goPrev}
+          <div className="mt-8 flex items-center justify-between">
+            <span className="mono-label">
+              {String(page + 1).padStart(2, "0")} / {String(totalPages).padStart(2, "0")}
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prev}
                 disabled={page === 0}
-                className="p-2 rounded-lg transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-                style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)", color: "var(--text-primary)" }}
+                data-cursor="LINK"
+                aria-label="Previous page"
+                className="grid h-10 w-10 place-items-center border border-(--border-color) text-(--text-secondary) transition-colors duration-200 hover:border-(--accent) hover:text-(--accent) disabled:pointer-events-none disabled:opacity-30"
               >
-                <FaChevronLeft />
-              </motion.button>
-              <span className="text-sm font-mono" style={{ color: "var(--text-secondary)" }}>
-                {page + 1} / {totalPages}
-              </span>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={goNext}
+                <FaChevronLeft size={13} />
+              </button>
+              <button
+                onClick={next}
                 disabled={page === totalPages - 1}
-                className="p-2 rounded-lg transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-                style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)", color: "var(--text-primary)" }}
+                data-cursor="LINK"
+                aria-label="Next page"
+                className="grid h-10 w-10 place-items-center border border-(--border-color) text-(--text-secondary) transition-colors duration-200 hover:border-(--accent) hover:text-(--accent) disabled:pointer-events-none disabled:opacity-30"
               >
-                <FaChevronRight />
-              </motion.button>
+                <FaChevronRight size={13} />
+              </button>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

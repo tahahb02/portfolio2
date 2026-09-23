@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaArrowUp } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Footer({ name }) {
@@ -8,77 +8,86 @@ export default function Footer({ name }) {
   const { t } = useLanguage();
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 400);
+    const onScroll = () => setShowTop(window.scrollY > 500);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const socials = [
+    { icon: FaGithub, href: "https://github.com/tahahb02", label: "GitHub" },
+    { icon: FaLinkedin, href: "https://www.linkedin.com/in/tahahilalbik/", label: "LinkedIn" },
+    { icon: FaEnvelope, href: "mailto:hilalbiktaha@gmail.com", label: "Email" },
+  ];
 
   return (
-    <footer className="py-10 sm:py-12 px-4 sm:px-6 relative" style={{ borderTop: "1px solid var(--border-color)" }}>
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
-          <div className="group">
-            <h4 className="text-lg font-bold mb-3" style={{ color: "var(--text-primary)" }}>
-              Taha HILAL BIK<span className="text-navy-400 group-hover:text-slate-300 transition-colors"></span>
-            </h4>
-            <p className="text-sm leading-relaxed group-hover:text-slate-400 transition-colors" style={{ color: "var(--text-muted)" }}>
-              Ingénieur d'État en Génie Informatique (MIAGE)<br />
-              Full-Stack Java Spring Boot & React
-            </p>
+    <footer className="border-t border-(--hairline) px-4 pt-14 sm:px-6 lg:px-10">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center border border-(--accent)/60 font-mono text-xs font-semibold tracking-wider text-(--accent)">
+                THB
+              </span>
+              <div>
+                <p className="text-lg font-bold tracking-tight text-(--text-primary)">{name}</p>
+                <p className="font-mono text-[11px] tracking-[0.18em] text-(--text-secondary)">
+                  FULL-STACK ENGINEER — AI ENTHUSIAST
+                </p>
+              </div>
+            </div>
+            
           </div>
+
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: "var(--text-secondary)" }}>
-              <span className="w-1 h-4 bg-gradient-to-b from-navy-500 to-slate-400 rounded-full" />
-              Contact
-            </h4>
-            <ul className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
-              <li className="flex items-center gap-2 hover:text-slate-400 transition-colors cursor-default">
-                <FaMapMarkerAlt className="text-xs text-navy-400/60" />
-                Casablanca, Maroc
-              </li>
-              <li className="flex items-center gap-2 hover:text-slate-400 transition-colors cursor-default">
-                <FaPhoneAlt className="text-xs text-slate-400/60" />
-                +212-691436399
-              </li>
-              <li className="flex items-center gap-2 hover:text-slate-400 transition-colors cursor-default">
-                <FaEnvelope className="text-xs text-navy-400/60" />
-                hilalbiktaha@gmail.com
-              </li>
+            <p className="mono-label">{t.footer.navLabel}</p>
+            <ul className="mt-4 space-y-2">
+              {[
+                { key: "home", label: t.nav.home },
+                { key: "skills", label: t.nav.skills },
+                { key: "experience", label: t.nav.experience },
+                { key: "projects", label: t.nav.projects },
+              ].map((l) => (
+                <li key={l.key}>
+                  <a
+                    href={`#${l.key}`}
+                    data-cursor="LINK"
+                    className="font-mono text-xs tracking-[0.14em] text-(--text-secondary) transition-colors duration-200 hover:text-(--accent)"
+                  >
+                    {l.label.toUpperCase()}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
+
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: "var(--text-secondary)" }}>
-              <span className="w-1 h-4 bg-gradient-to-b from-slate-400 to-navy-500 rounded-full" />
-              {t.contact.infoTitle === "Contact Information" ? "Social" : "Réseaux"}
-            </h4>
-            <div className="flex gap-3">
-              {[
-                { icon: FaGithub, href: "https://github.com/tahahb02", hover: "hover:text-navy-400", shadow: "hover:shadow-navy-500/20" },
-                { icon: FaLinkedin, href: "https://www.linkedin.com/in/tahahilalbik/", hover: "hover:text-slate-300", shadow: "hover:shadow-slate-400/20" },
-                { icon: FaEnvelope, href: "mailto:hilalbiktaha@gmail.com", hover: "hover:text-navy-400", shadow: "hover:shadow-navy-500/20" },
-              ].map(({ icon: Icon, href, hover }, i) => (
+            <p className="mono-label">{t.footer.social}</p>
+            <div className="mt-4 flex gap-3">
+              {socials.map(({ icon: Icon, href, label }) => (
                 <a
-                  key={i}
+                  key={label}
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-lg transition-all hover:scale-110 hover:shadow-sm"
-                  style={{ backgroundColor: "var(--bg-secondary)", color: "var(--text-muted)" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = hover.includes("stone") ? "#8ab2d3" : "#2c5f8a"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--text-muted)"; }}
-                  title={href.includes("github") ? "GitHub" : href.includes("linkedin") ? "LinkedIn" : "Email"}
+                  data-cursor="LINK"
+                  aria-label={label}
+                  className="grid h-11 w-11 place-items-center border border-(--border-color) text-(--text-secondary) transition-all duration-200 hover:-translate-y-0.5 hover:border-(--accent) hover:text-(--accent)"
                 >
-                  <Icon size={18} />
+                  <Icon size={15} />
                 </a>
               ))}
             </div>
           </div>
         </div>
-        <div className="pt-6 text-center" style={{ borderTop: "1px solid var(--border-color)" }}>
-          <p className="text-sm flex items-center justify-center gap-1 transition-colors" style={{ color: "var(--text-muted)" }}>
-            &copy; 2026 {name}. {t.footer.madeWith}
+
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-(--hairline) py-6 sm:flex-row">
+          <p className="font-mono text-[11px] tracking-[0.14em] text-(--text-muted)">
+            © 2026 {name}. {t.footer.rights}
+          </p>
+          <p className="font-mono text-[11px] tracking-[0.14em] text-(--text-muted)">
+            <span className="text-(--accent)">//</span> CASABLANCA · MOROCCO
           </p>
         </div>
       </div>
@@ -86,16 +95,17 @@ export default function Footer({ name }) {
       <AnimatePresence>
         {showTop && (
           <motion.button
-            onClick={scrollToTop}
-            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            onClick={scrollTop}
+            initial={{ opacity: 0, scale: 0.6, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.5, y: 20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-6 right-6 p-3 bg-gradient-to-r from-navy-600 to-navy-700 text-white rounded-xl shadow-lg shadow-navy-500/25 hover:shadow-xl hover:shadow-navy-500/40 hover:scale-110 active:scale-90 transition-all duration-300 cursor-pointer z-40"
+            exit={{ opacity: 0, scale: 0.6, y: 12 }}
+            transition={{ duration: 0.25 }}
+            data-cursor="LINK"
             aria-label={t.scrollTop}
+            className="fixed bottom-6 right-6 z-40 grid h-12 w-12 place-items-center border border-(--accent)/50 bg-(--bg-elevated) text-(--accent) shadow-2xl transition-colors duration-200 hover:bg-(--accent) hover:text-(--on-accent)"
           >
-            <FaArrowUp />
-          </motion.button>  
+            <FaArrowUp size={15} />
+          </motion.button>
         )}
       </AnimatePresence>
     </footer>
